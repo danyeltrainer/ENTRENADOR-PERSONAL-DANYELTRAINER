@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Daniel Henriquez | Entrenamiento Personal & Movimiento</title>
+  <!-- Google Fonts + Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0c12;
+      color: #eef2ff;
+      scroll-behavior: smooth;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section {
+      padding: 70px 0;
+    }
+    .section-sm {
+      padding: 40px 0;
+    }
+    .bg-light {
+      background: #11141f;
+    }
+    .bg-dark-soft {
+      background: #05070c;
+      color: #e0e4f0;
+    }
+    .text-center {
+      text-align: center;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-weight: 600;
+      padding: 12px 28px;
+      border-radius: 40px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: #00f0ff;
+      color: #0a0c12;
+      box-shadow: 0 0 8px rgba(0,240,255,0.5);
+    }
+    .btn-primary:hover {
+      background: #00d4e0;
+      transform: translateY(-2px);
+      box-shadow: 0 0 14px #00f0ff;
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid #00f0ff;
+      color: #00f0ff;
+    }
+    .btn-outline:hover {
+      background: #00f0ff22;
+      border-color: #00f0ff;
+      color: white;
+    }
+    .btn-whatsapp {
+      background: #25D366;
+      color: white;
+      box-shadow: 0 4px 10px rgba(37,211,102,0.3);
+    }
+    .btn-whatsapp:hover {
+      background: #20b859;
+      transform: translateY(-2px);
+      box-shadow: 0 0 12px #25D366;
+    }
+    .btn-block {
+      width: 100%;
+      justify-content: center;
+    }
+
+    h1, h2, h3 {
+      font-weight: 800;
+      line-height: 1.2;
+    }
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+    .section-subhead {
+      font-size: 1.1rem;
+      color: #9ca3af;
+      margin-bottom: 2.5rem;
+    }
+
+    .grid-auto {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 32px;
+    }
+    .grid-2cols {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+
+    .service-card {
+      background: #0f121c;
+      border-radius: 32px;
+      padding: 28px 24px;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.5);
+      transition: all 0.25s;
+      border: 1px solid #2a2e3f;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      backdrop-filter: blur(2px);
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      border-color: #00f0ff;
+      box-shadow: 0 0 18px rgba(0,240,255,0.2);
+    }
+    .premium-badge {
+      background: #ff00cc;
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 50px;
+      display: inline-block;
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 0 6px #ff00cc;
+    }
+    .card-icon {
+      font-size: 2.4rem;
+      margin-bottom: 20px;
+      color: #00f0ff;
+    }
+    .price {
+      font-size: 2rem;
+      font-weight: 800;
+      margin: 16px 0 8px;
+      color: #fff;
+    }
+    .price small {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #9ca3af;
+    }
+    .old-price {
+      text-decoration: line-through;
+      font-size: 1rem;
+      color: #9ca3af;
+      margin-right: 8px;
+    }
+    .feature-list {
+      list-style: none;
+      margin: 20px 0 24px;
+      flex-grow: 1;
+    }
+    .feature-list li {
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.9rem;
+    }
+    .feature-list i {
+      color: #25D366;
+      width: 20px;
+      font-size: 1rem;
+    }
+    .pricing-plan {
+      background: #1a1e2c;
+      border-radius: 24px;
+      padding: 16px;
+      margin: 20px 0 16px;
+      border-left: 3px solid #00f0ff;
+    }
+    .prepay-note {
+      font-size: 0.75rem;
+      color: #ffaa66;
+      margin-top: 8px;
+      text-align: center;
+      background: #2a1e0c;
+      border-radius: 40px;
+      padding: 4px 12px;
+      display: inline-block;
+      width: auto;
+    }
+    hr {
+      margin: 24px 0;
+      border: none;
+      border-top: 1px solid #2a2e3f;
+    }
+    .social-stats {
+      display: flex;
+      gap: 28px;
+      justify-content: center;
+      margin: 20px 0 0;
+      flex-wrap: wrap;
+    }
+    .stat-item {
+      text-align: center;
+    }
+    .stat-number {
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: #00f0ff;
+    }
+    .hero {
+      padding: 60px 0 40px;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .hero-badge {
+      background: #00f0ff22;
+      border: 1px solid #00f0ff;
+      color: #00f0ff;
+      padding: 5px 15px;
+      border-radius: 40px;
+      font-weight: 500;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+    .cofounder-card {
+      background: linear-gradient(135deg, #11141f, #0a0c12);
+      border-radius: 32px;
+      padding: 32px;
+      border: 1px solid #2a2e3f;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .tuesday-class {
+      border-radius: 40px;
+      padding: 32px;
+      background: #0f121c;
+      border-left: 6px solid #ff00cc;
+      box-shadow: 0 0 12px rgba(255,0,204,0.2);
+    }
+    .discipline-addon {
+      background: #1a1e2c;
+      border-radius: 20px;
+      padding: 12px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+      border: 1px solid #ff00cc33;
+    }
+    @media (max-width: 860px) {
+      .grid-2cols {
+        grid-template-columns: 1fr;
+      }
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      .container {
+        padding: 0 20px;
+      }
+      .section {
+        padding: 50px 0;
+      }
+      .cofounder-card {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+    .footer {
+      background: #05070c;
+      color: #9ca3af;
+      padding: 48px 0 32px;
+      margin-top: 20px;
+      border-top: 1px solid #2a2e3f;
+    }
+    .social-links a {
+      color: #eef2ff;
+      margin: 0 12px;
+      font-size: 1.4rem;
+      transition: 0.2s;
+    }
+    .social-links a:hover {
+      color: #00f0ff;
+      text-shadow: 0 0 5px #00f0ff;
+    }
+    .floating-wa {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: #25D366;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      z-index: 99;
+      transition: 0.2s;
+    }
+    .floating-wa:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 12px #25D366;
+    }
+    .floating-wa i {
+      color: white;
+      font-size: 28px;
+    }
+    .workshop-note {
+      font-size: 0.75rem;
+      margin-top: 12px;
+      color: #9ca3af;
+    }
+    .price-badge {
+      background: #2a2e3f;
+      border-radius: 40px;
+      padding: 4px 12px;
+      font-weight: 600;
+      display: inline-block;
+      margin: 10px 0;
+      font-size: 0.8rem;
+    }
+    .single-class {
+      border-top: 1px dashed #2a2e3f;
+      margin-top: 16px;
+      padding-top: 16px;
+    }
+    .neon-text {
+      text-shadow: 0 0 3px #00f0ff;
+    }
+    .grupal-list {
+      margin: 16px 0;
+    }
+    .grupal-list p {
+      margin-bottom: 12px;
+    }
+    .free-workshop {
+      background: linear-gradient(145deg, #0f121c, #0b0e16);
+      border-color: #00f0ff;
+    }
+  </style>
+</head>
+<body>
+
+<!-- WHATSAPP FLOATING BUTTON -->
+<a href="https://wa.me/56935541341?text=Hola%20Daniel!%20Vi%20tu%20web%20y%20quiero%20consultar%20por%20tus%20servicios%20💪" 
+   class="floating-wa" target="_blank" rel="noopener noreferrer">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<main>
+  <!-- HERO SECTION -->
+  <div class="container hero">
+    <div class="text-center">
+      <div class="hero-badge">
+        <i class="fas fa-bolt"></i> Téc. Superior Preparación Física | +10 años de experiencia
+      </div>
+      <h1>Daniel Henriquez<br><span style="color:#00f0ff;">Dominio Corporal & Entrenador Personal</span></h1>
+      <p style="font-size: 1.2rem; max-width: 700px; margin: 20px auto; color: #cbd5e1;">
+        Optimizo tu salud, condición física y rendimiento. <strong>Rutinas personalizadas</strong> (online/presencial/grupal) 
+        con enfoque científico y humano. Especialista en acrobacias, breakdance, firestaff y preparación física de alto nivel.
+      </p>
+      <div class="social-stats">
+        <div class="stat-item"><span class="stat-number">713+</span><br>publicaciones</div>
+        <div class="stat-item"><span class="stat-number">1.6K</span><br>seguidores IG</div>
+        <div class="stat-item"><span class="stat-number">+40</span><br>clientes activos</div>
+      </div>
+      <div style="margin-top: 32px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="#planes" class="btn btn-primary"><i class="fas fa-dumbbell"></i> Ver planes y precios</a>
+        <a href="https://instagram.com/dany.el.trainer" target="_blank" class="btn btn-outline"><i class="fab fa-instagram"></i> @dany.el.trainer</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICIOS PRINCIPALES (4 TARJETAS) -->
+  <div class="bg-light" id="planes">
+    <div class="container section">
+      <div class="text-center">
+        <h2>Elige el camino hacia tu mejor versión</h2>
+        <p class="section-subhead">Entrenamientos 100% personalizados · Seguimiento real · Resultados con ciencia y experiencia</p>
+        <div class="prepay-note" style="margin-bottom: 20px;">⚠️ Todos los planes y servicios de pago son prepago: se pagan al inicio del ciclo (mensual o por sesión).</div>
+      </div>
+      
+      <div class="grid-auto">
+        <!-- 1. ASINCRÓNICO PREMIUM -->
+        <div class="service-card">
+          <div class="premium-badge"><i class="fas fa-crown"></i> MÁS VENDIDO · PREMIUM</div>
+          <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
+          <h3>Online Asincrónico</h3>
+          <p style="margin: 8px 0 4px; font-weight: 500;">Entrena donde quieras, cuando quieras</p>
+          <div class="price"><span class="old-price">$50.000</span> $45.000 <small>/ mes</small></div>
+          <p style="font-size: 0.85rem; color:#9ca3af;">hasta 4 rutinas semanales (16 sesiones/mes) · Evaluación + seguimiento</p>
+          <ul class="feature-list">
+            <li><i class="fas fa-check-circle"></i> Evaluación inicial online</li>
+            <li><i class="fas fa-check-circle"></i> Planificación mensual 100% personalizada</li>
+            <li><i class="fas fa-check-circle"></i> Seguimiento vía chat + revisión de técnica en vídeo</li>
+            <li><i class="fas fa-check-circle"></i> Controles de progreso cada 15 días</li>
+          </ul>
+          <div class="pricing-plan">
+            <strong>✔ Incluye base:</strong> Mejora de fuerza, acondicionamiento físico, salud, agilidad, estabilidad y rendimiento general.<br>
+            <span style="font-size: 0.85rem;">✅ El entrenamiento puede enfocarse en tu área de interés (acrobacia, breaking, etc.) pero sin metodología disciplinaria específica a menos que se contrate el adicional.</span>
+          </div>
+          <div class="discipline-addon">
+            <i class="fas fa-plus-circle"></i> <strong>➕ Adicional por disciplina específica (+$5.000/mes)</strong><br>
+            Elige una: Acrobacia, Breaking o Firestaff. Incluye metodología progresiva y ejercicios específicos para desarrollar habilidades artísticas/deportivas.
+          </div>
+          <a href="https://wa.me/56935541341?text=Hola%20Daniel!%20Quiero%20el%20PLAN%20ASINCRÓNICO%20PREMIUM%20($45.000)%20y%20me%20interesa%20agregar%20desarrollo%20disciplinario%20(acrobacia/breaking/firestaff)%20por%20%245.000%20adicionales.%20Cuéntame%20más." 
+             target="_blank" class="btn btn-whatsapp btn-block" style="margin-top: 12px;"><i class="fab fa-whatsapp"></i> Contratar ahora</a>
+        </div>
+
+        <!-- 2. ONLINE SINCRÓNICO (con clase suelta) -->
+        <div class="service-card">
+          <div class="card-icon"><i class="fas fa-video"></i></div>
+          <h3>Online Sincrónico</h3>
+          <p style="margin-bottom: 8px;">Entrena conmigo en vivo · Google Meet</p>
+          <div class="price">$45.000 <small>/ mes</small> <span style="font-size: 0.9rem;">(1 vez/semana)</span></div>
+          <div class="price" style="font-size: 1.6rem;">$85.000 <small>/ mes</small> <span style="font-size: 0.8rem;">(2 veces/semana)</span></div>
+          <ul class="feature-list">
+            <li><i class="fas fa-check-circle"></i> Sesiones guiadas en tiempo real, corrección instantánea</li>
+            <li><i class="fas fa-check-circle"></i> Rutinas adaptadas a tu nivel y espacio</li>
+            <li><i class="fas fa-check-circle"></i> Enfoque en disciplinas (acrobacia, breaking, firestaff) <strong>sin costo adicional</strong></li>
+          </ul>
+          <div class="pricing-plan">
+            <strong>✔ Incluye base:</strong> Mejora de fuerza, salud, agilidad, estabilidad y rendimiento general.<br>
+            ✅ Las clases en tiempo real pueden enfocarse en desarrollo de habilidades acrobáticas, breaking o firestaff, todo incluido.
+          </div>
+          <div class="single-class">
+            <div class="price-badge"><i class="fas fa-ticket-alt"></i> Clase suelta online: $12.000</div>
+            <p style="font-size: 0.8rem; margin-top: 8px;">*No incluye evaluaciones ni seguimiento. Planificación mediante packs de contenidos (consultar listado). Clase válida hasta 2 personas mismo valor.</p>
+          </div>
+          <a href="https://wa.me/56935541341?text=Hola%20Daniel!%20Quiero%20contratar%20entrenamiento%20ONLINE%20SINCRÓNICO%20(mensual%20o%20clase%20suelta)%20y%20saber%20disponibilidad." 
+             target="_blank" class="btn btn-whatsapp btn-block" style="background:#075E54; margin-top: 12px;"><i class="fab fa-whatsapp"></i> Agendar videollamada</a>
+        </div>
+
+        <!-- 3. PRESENCIAL A DOMICILIO (con clase suelta) -->
+        <div class="service-card">
+          <div class="card-icon"><i class="fas fa-home"></i></div>
+          <h3>Presencial a Domicilio</h3>
+          <p>Clases 1:1 en Santiago (o lugar a convenir dentro de la ciudad)</p>
+          <div class="price">$55.000 <small>/ mes</small> <span style="font-size: 0.8rem;">(1 vez/semana)</span></div>
+          <div class="price" style="font-size: 1.6rem;">$100.000 <small>/ mes</small> <span style="font-size: 0.8rem;">(2 veces/semana)</span></div>
+          <ul class="feature-list">
+            <li><i class="fas fa-check-circle"></i> Corrección en tiempo real, técnica perfecta</li>
+            <li><i class="fas fa-check-circle"></i> Evaluación completa + seguimiento personal</li>
+            <li><i class="fas fa-check-circle"></i> Enfoque en disciplinas (acrobacia, breaking, firestaff) <strong>sin costo adicional</strong></li>
+          </ul>
+          <div class="pricing-plan">
+            <strong>✔ Incluye base:</strong> Mejora de fuerza, salud, agilidad, estabilidad y rendimiento general.<br>
+            ✅ Clases presenciales con metodología para desarrollo de habilidades específicas incluidas.
+          </div>
+          <div class="single-class">
+            <div class="price-badge"><i class="fas fa-ticket-alt"></i> Clase suelta presencial: $15.000</div>
+            <p style="font-size: 0.8rem; margin-top: 8px;">*No incluye evaluaciones ni seguimiento. Planificación mediante packs de contenidos (consultar listado). Clase válida hasta 2 personas mismo valor.</p>
+          </div>
+          <a href="https://wa.me/56935541341?text=Hola%20Daniel!%20Quiero%20entrenamiento%20PRESENCIAL%20a%20domicilio%20en%20Santiago%20(mensual%20o%20clase%20suelta)%20y%20conocer%20horarios." 
+             target="_blank" class="btn btn-whatsapp btn-block"><i class="fab fa-whatsapp"></i> Reservar sesión</a>
+        </div>
+
+        <!-- 4. GRUPAL (valores online explícitos) -->
+        <div class="service-card">
+          <div class="card-icon"><i class="fas fa-users"></i></div>
+          <h3>Entrenamiento Grupal</h3>
+          <p>Online o presencial (grupos reducidos hasta 10 personas)</p>
+          <div class="grupal-list">
+            <p><strong>✔ Hasta 5 personas:</strong> Presencial $20.000 / Online $15.000 (por sesión)</p>
+            <p><strong>✔ 6 a 10 personas:</strong> Presencial $30.000 / Online $22.000 (por sesión)</p>
+          </div>
+          <div class="pricing-plan">
+            <i class="fas fa-calendar-alt"></i> Ideal para grupos de amigos, familias o equipos. Trabajamos condición física, habilidades y diversión.
+          </div>
+          <a href="https://wa.me/56935541341?text=Hola%20Daniel!%20Quiero%20armar%20un%20grupo%20de%20entrenamiento%20grupal%20(online/presencial)%20de%20hasta%2010%20personas%20y%20necesito%20cotización." 
+             target="_blank" class="btn btn-whatsapp btn-block"><i class="fab fa-whatsapp"></i> Consultar grupo</a>
+        </div>
+      </div>
+
+      <!-- WORKSHOP (item independiente) -->
+      <div style="margin-top: 48px;">
+        <div class="service-card" style="background: linear-gradient(145deg, #0f121c, #0b0e16); border-color: #ff00cc;">
+          <div class="card-icon"><i class="fas fa-chalkboard-user"></i></div>
+          <h3>🎯 Workshops especializados</h3>
+          <p>Para grupos de más de 10 personas o eventos fuera de Santiago (RM o regiones). Temáticas: Acrobacia, Breaking, Firestaff, Acondicionamiento físico, etc.</p>
+          <ul class="feature-list">
+            <li><i class="fas fa-check-circle"></i> Contenido adaptado a tu público objetivo</li>
+            <li><i class="fas fa-check-circle"></i> Duración, lugar y materiales a convenir</li>
+            <li><i class="fas fa-check-circle"></i> Valor según cantidad de asistentes, horas y desplazamiento</li>
+          </ul>
+          <div class="pricing-plan">
+            📌 Solicita cotización personalizada vía WhatsApp o correo electrónico.
+          </div>
+          <a href="https://wa.me/56935541341?text=Hola%20Daniel!%20Quiero%20solicitar%20un%20WORKSHOP%20grupal%20(acrobacia/breaking/firestaff/condición%20física)%20para%20más%20de%2010%20personas%20o%20fuera%20de%20Santiago.%20Por%20favor%20dame%20información." 
+             target="_blank" class="btn btn-outline btn-block"><i class="fab fa-whatsapp"></i> Consultar workshop</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLASES ESPECIALIZADAS: ACROBACIA, BREAKING, FIRESTAFF -->
+  <div class="container section">
+    <div class="text-center">
+      <h2>🔥 Disciplinas de expresión corporal & movimiento</h2>
+      <p class="section-subhead">Acrobacias · Breakdance · Firestaff (vara de fuego)</p>
+    </div>
+    <div class="grid-2cols">
+      <!-- ACROBACIAS (horario y ubicación detallada) -->
+      <div class="service-card" style="background: #0f121c;">
+        <div class="card-icon"><i class="fas fa-hand-fist"></i></div>
+        <h3>Taller de Acrobacias</h3>
+        <p><strong>Clases presenciales grupales</strong> · Todos los jueves</p>
+        <div style="background: #1a1e2c; border-radius: 24px; padding: 12px; margin: 16px 0;">
+          <i class="fas fa-clock"></i> <strong>Jueves 19:30 a 21:00 hrs</strong><br>
+          <i class="fas fa-map-pin"></i> Cancha El Sauce, Portales 1095, El Bosque<br>
+          <span style="font-weight: 800; color:#00f0ff;">📌 Valor: $4.000 efectivo / $6.000 transferencia</span>
+        </div>
+        <ul class="feature-list">
+          <li><i class="fas fa-check-circle"></i> Preacrobáticos y fundamentos del movimiento</li>
+          <li><i class="fas fa-check-circle"></i> Rutinas de preparación física acordes al contenido</li>
+          <li><i class="fas fa-check-circle"></i> Metodología progresiva: vinculando conocimientos preacrobáticos con las clases</li>
+          <li><i class="fas fa-check-circle"></i> Desarrollo de volteretas, handstand, saltos y secuencias</li>
+        </ul>
+        <a href="https://wa.me/56935541341?text=Hola%20Daniel!%20Me%20interesa%20más%20información%20para%20asistir%20a%20las%20clases%20de%20ACROBACIAS%20(los%20jueves%20en%20El%20Bosque).%20Por%20favor%20cuéntame%20detalles." 
+           target="_blank" class="btn btn-outline btn-block"><i class="fab fa-whatsapp"></i> Reserva tu cupo</a>
+      </div>
+
+      <!-- BREAKING (con nuevo ítem de expresión corporal) -->
+      <div class="service-card" style="background: #0f121c;">
+        <div class="card-icon"><i class="fas fa-music"></i></div>
+        <h3>Breaking | Breakdance</h3>
+        <p>Escuela de Circo Urbano · Expresión corporal escénica</p>
+        <div style="background: #1a1e2c; border-radius: 20px; padding: 10px; margin: 12px 0;">
+          <i class="fas fa-calendar-week"></i> <strong>Sábados 11:00 a 14:00 hrs</strong><br>
+          <i class="fas fa-location-dot"></i> Sede Comunitaria, Portales 1095, El Bosque<br>
+          <span style="font-weight: 800; color:#00f0ff;">📌 Valor: $4.000 efectivo / $6.000 transferencia (por clase)</span>
+        </div>
+        <ul class="feature-list">
+          <li><i class="fas fa-check-circle"></i> Fundamentos de powermoves, footwork, freezes</li>
+          <li><i class="fas fa-check-circle"></i> Rutinas de acondicionamiento específico para breaking</li>
+          <li><i class="fas fa-check-circle"></i> Metodología progresiva desde cero hasta nivel avanzado</li>
+          <li><i class="fas fa-check-circle"></i> Expresión corporal basada en el desarrollo de experiencias físicas</li>
+        </ul>
+        <p>📌 Planes mensuales o semestrales: consultar en <strong>"Dilo Con Movimiento - Circo Urbano"</strong> → <a href="https://danyeltrainer.github.io/DILO-CON-MOVIMIENTO" target="_blank" style="color:#00f0ff; text-decoration:underline;">ver sitio oficial</a></p>
+        <a href="https://wa.me/56935541341?text=Hola%20Daniel!%20Me%20interesa%20más%20información%20para%20asistir%20a%20las%20clases%20de%20BREAKING%20(los%20sábados%20en%20El%20Bosque).%20Quiero%20saber%20valores%20y%20disponibilidad." 
+           target="_blank" class="btn btn-outline btn-block"><i class="fab fa-whatsapp"></i> Consultar breaking</a>
+      </div>
+    </div>
+
+    <!-- FIRESTAFF con aclaración de presencial en RM y workshop grupal -->
+    <div style="margin-top: 32px;">
+      <div class="service-card" style="background: #0f121c; border-color: #ff8800;">
+        <div class="card-icon"><i class="fas fa-fire" style="color:#ff8800;"></i></div>
+        <h3 style="color:#ffb347;">🔥 Firestaff · Vara de fuego</h3>
+        <p>Enseñanza desde fundamentos: combustible, riesgos, vestimenta, técnicas de manejo y secuencias coreográficas.</p>
+        <div class="grid-2cols" style="gap: 12px; margin: 16px 0; display: flex; flex-wrap: wrap;">
+          <div class="price-badge" style="background:#1a1e2c;">💻 Online: $12.000 (clase suelta)</div>
+          <div class="price-badge" style="background:#1a1e2c;">🏠 Presencial (RM): $15.000 / $18.000 transferencia</div>
+        </div>
+        <ul class="feature-list">
+          <li><i class="fas fa-check-circle"></i> Seguridad y protocolos</li>
+          <li><i class="fas fa-check-circle"></i> Técnicas básicas y avanzadas de giros/figuras</li>
+          <li><i class="fas fa-check-circle"></i> Se enseñan básicos de acrobacia integrados</li>
+        </ul>
+        <p class="workshop-note">🔥 Para potenciar aún más tu expresión física y corporal, se recomienda complementar con el <strong>taller de acrobacias</strong> y/o <strong>breaking</strong>.<br>
+        📌 Clases grupales de firestaff: solicitar como <strong>workshop</strong> (cotizar según cantidad de personas).</p>
+        <a href="https://wa.me/56935541341?text=Hola%20Daniel!%20Me%20interesa%20aprender%20FIRESTAFF%20(vara%20de%20fuego)%20y%20quiero%20información%20sobre%20clases%20(online%20o%20presencial%20en%20RM)%20y%20valores." 
+           target="_blank" class="btn btn-primary" style="background:#ff8800; color:#0a0c12;"><i class="fab fa-whatsapp"></i> Consultar firestaff</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NUEVO TALLER GRATUITO: CALISTENIA + FUNCIONAL (Municipio Lo Espejo) con días y horarios -->
+  <div class="bg-light">
+    <div class="container section">
+      <div class="service-card free-workshop" style="border-color: #00f0ff; background: linear-gradient(145deg, #0f121c, #0b0e16);">
+        <div class="card-icon"><i class="fas fa-tree"></i></div>
+        <h3>🌿 Taller Gratuito de Calistenia y Entrenamiento Funcional</h3>
+        <p>En colaboración con el <strong>Municipio de Lo Espejo</strong> · Para mayores de 14 años (no excluyente)</p>
+        <div style="background: #1a1e2c; border-radius: 24px; padding: 16px; margin: 16px 0;">
+          <i class="fas fa-calendar-alt"></i> <strong>Lunes y Miércoles · 18:00 a 19:30 hrs</strong><br>
+          <i class="fas fa-map-marker-alt"></i> <strong>Plaza San Lucas</strong> - Pedro Lira 9915, Lo Espejo<br>
+          <i class="fab fa-instagram"></i> Instagram: <a href="https://instagram.com/Plaza_lucas_san" target="_blank" style="color:#00f0ff;">@Plaza_lucas_san</a>
+        </div>
+        <ul class="feature-list">
+          <li><i class="fas fa-heartbeat"></i> Mejora y desarrollo de la condición física para la salud</li>
+          <li><i class="fas fa-hand-peace"></i> Desarrollo de habilidades: Handstand (parada de manos), secuencias en paralelas, muscle up, entre otras</li>
+          <li><i class="fas fa-tint"></i> Entrenamiento metabólico dirigido para personas con hipertensión arterial y diabetes</li>
+          <li><i class="fas fa-sun"></i> Entrenamiento al aire libre, optimizando tolerancia a cambios de temperatura y humedad (te enfermas menos)</li>
+        </ul>
+        <div class="pricing-plan" style="background:#00f0ff10; border-color:#00f0ff;">
+          ✅ <strong>Totalmente gratuito</strong> · Abierto a toda la comunidad
+        </div>
+        <a href="https://wa.me/56935541341?text=Hola%20Daniel!%20Me%20interesa%20el%20taller%20gratuito%20de%20CALISTENIA%20en%20Plaza%20San%20Lucas%20(Lo%20Espejo)%20los%20lunes%20y%20miércoles%2018-19:30.%20Quiero%20más%20información." 
+           target="_blank" class="btn btn-outline btn-block"><i class="fab fa-whatsapp"></i> Consultar taller gratuito</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROYECTO MARTES 9AM -->
+  <div class="container section">
+    <div class="tuesday-class">
+      <div class="text-center">
+        <span class="premium-badge" style="background:#ff00cc;">NUEVO PROYECTO · LANZAMIENTO</span>
+        <h2 style="margin-top: 12px;">🌅 Clases grupales online: Martes 9:00 AM</h2>
+        <p style="font-size: 1.1rem; max-width: 700px; margin: 16px auto;">Desarrollo integral de la condición física: capacidades para la vida diaria, compensación postural, flexibilidad, fuerza, estabilidad, habilidades acrobáticas y agilidad. <strong>Movimiento con conexión y reflexión corporal</strong>.</p>
+        <div style="background: #1a1e2c; border-radius: 32px; padding: 20px; display: inline-block; margin: 20px 0;">
+          <i class="fas fa-calendar-check"></i> <strong>Martes 14 de abril · 9:00 AM (Google Meet)</strong><br>
+          <span style="font-size: 1.5rem; font-weight: 800; color:#00f0ff;">🎁 PRIMERA CLASE GRATUITA</span><br>
+          <span>Con inscripción previa. Para todos los niveles.</span>
+        </div>
+        <p>Valor regular por clase: <strong>$3.000</strong> (precio de lanzamiento).</p>
+        <a href="https://wa.me/56935541341?text=Hola%20Daniel!%20Me%20interesa%20la%20clase%20grupal%20del%20martes%209am%20del%2014%20abril%20(GRATUITA)%20y%20quiero%20inscribirme.%20Mi%20nombre%20es..." 
+           target="_blank" class="btn btn-primary" style="background:#00f0ff; color:#000;"><i class="fab fa-whatsapp"></i> Inscribirme a clase gratuita</a>
+        <p style="margin-top: 18px; font-size: 0.85rem;">📌 Cupos limitados · Clases semanales después del lanzamiento</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ASESORÍA PREMIUM ONLINE (beneficios) -->
+  <div class="bg-light">
+    <div class="container section">
+      <div class="text-center">
+        <h2>🚀 ¿Por qué elegir mi asesoría premium online?</h2>
+        <p class="section-subhead">No se trata de demostraciones vacías, sino de ciencia + experiencia real</p>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 32px; justify-content: center;">
+        <div style="flex:1; min-width: 230px;">
+          <i class="fas fa-flask" style="font-size: 2rem; color:#00f0ff;"></i>
+          <h3 style="margin: 10px 0;">Conocimiento científico aplicado</h3>
+          <p>Basado en evidencia, biomecánica y fisiología del ejercicio.</p>
+        </div>
+        <div style="flex:1; min-width: 230px;">
+          <i class="fas fa-history" style="font-size: 2rem; color:#00f0ff;"></i>
+          <h3 style="margin: 10px 0;">+10 años transformando vidas</h3>
+          <p>Experiencia con cientos de personas: salud, rehabilitación y rendimiento.</p>
+        </div>
+        <div style="flex:1; min-width: 230px;">
+          <i class="fas fa-chart-line" style="font-size: 2rem; color:#00f0ff;"></i>
+          <h3 style="margin: 10px 0;">Planificación integral</h3>
+          <p>Evaluación, seguimiento continuo y ajustes en tiempo real.</p>
+        </div>
+      </div>
+      <div class="text-center" style="margin-top: 44px;">
+        <a href="https://wa.me/56935541341?text=Hola%20Daniel,%20quiero%20saber%20más%20sobre%20la%20asesoría%20ONLINE%20ASINCRÓNICA%20y%20sus%20beneficios%20científicos." 
+           class="btn btn-primary" style="background:#00f0ff; color:#000;"><i class="fab fa-whatsapp"></i> Quiero asesoría premium →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CO-FUNDADOR DILO CON MOVIMIENTO + COMUNIDAD WHATSAPP -->
+  <div class="container section-sm">
+    <div class="cofounder-card">
+      <div>
+        <i class="fas fa-users" style="font-size: 2rem; color:#00f0ff;"></i>
+        <h3 style="margin: 8px 0 12px;">🌱 Co-fundador de "DILO CON MOVIMIENTO"</h3>
+        <p style="max-width: 500px;">Estudio de movimiento humano donde profundizamos en biomecánica, movilidad funcional y rendimiento consciente. <strong>Únete a nuestra comunidad</strong> y descubre talleres exclusivos.</p>
+      </div>
+      <div>
+        <a href="https://danyeltrainer.github.io/DILO-CON-MOVIMIENTO" target="_blank" class="btn btn-primary" style="background:#00f0ff; color:#000;">
+          <i class="fas fa-external-link-alt"></i> Conocer DILO CON MOVIMIENTO
+        </a>
+        <div style="margin-top: 16px;">
+          <a href="https://chat.whatsapp.com/Fv0KSE9euwkBzCTHk4KdpT" target="_blank" class="btn btn-outline" style="border-color:#25D366; color:#25D366;">
+            <i class="fab fa-whatsapp"></i> Unirse a la comunidad WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LLAMADA FINAL -->
+  <div class="bg-dark-soft">
+    <div class="container section" style="text-align: center;">
+      <h3 style="color: white; margin-bottom: 16px;">¿Qué espera para conocer tu mejor versión?</h3>
+      <div style="display: flex; flex-wrap: wrap; gap: 18px; justify-content: center;">
+        <a href="https://wa.me/56935541341?text=Hola%20Daniel,%20quiero%20agendar%20una%20consulta%20gratuita%20para%20elegir%20mi%20plan%20de%20entrenamiento%20y%20conocer%20tu%20metodología." 
+           class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Agenda tu asesoría sin costo</a>
+        <a href="https://instagram.com/dany.el.trainer" target="_blank" class="btn btn-outline"><i class="fab fa-instagram"></i> Sígueme en Instagram</a>
+        <a href="https://youtube.com/@danieltrainer6130" target="_blank" class="btn btn-outline"><i class="fab fa-youtube"></i> YouTube</a>
+      </div>
+      <p style="margin-top: 28px; font-size: 0.85rem;">📧 Para proyectos, instituciones o workshops: <strong>dany.el.trainer@gmail.com</strong></p>
+      <p style="margin-top: 8px;">📲 Respuesta rápida por WhatsApp <strong>+569 3554 1341</strong></p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px;">
+        <div>
+          <h4 style="color: white; margin-bottom: 12px;">Daniel Henriquez</h4>
+          <p>Técnico Superior en Preparación Física<br>Entrenador especializado en rendimiento, acrobacia, breakdance y firestaff</p>
+          <div class="social-links" style="margin-top: 20px;">
+            <a href="https://instagram.com/dany.el.trainer" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://youtube.com/@danieltrainer6130" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://github.com/danyeltrainer" target="_blank"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4 style="color: white; margin-bottom: 12px;">Enlaces rápidos</h4>
+          <ul style="list-style: none; line-height: 2;">
+            <li><a href="#planes" style="color:#b0b3c0; text-decoration: none;">Planes de entrenamiento</a></li>
+            <li><a href="https://danyeltrainer.github.io/DILO-CON-MOVIMIENTO" style="color:#b0b3c0; text-decoration: none;">DILO CON MOVIMIENTO</a></li>
+            <li><a href="https://wa.me/56935541341?text=Hola%20Daniel,%20quiero%20resolver%20dudas%20sobre%20tus%20servicios" style="color:#b0b3c0; text-decoration: none;">Contacto directo WhatsApp</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="color: white; margin-bottom: 12px;">📍 Presencial / Talleres</h4>
+          <p>Clases a domicilio en Santiago · Workshops grupales dentro/fuera de RM<br>Talleres abiertos: El Bosque (Portales 1095) y Lo Espejo (Plaza San Lucas)</p>
+          <p><i class="fas fa-envelope"></i> dany.el.trainer@gmail.com</p>
+        </div>
+      </div>
+      <hr style="margin: 32px 0 20px; border-color: #2a2e3f;">
+      <p style="text-align: center; font-size: 0.8rem;">© 2025 Daniel Henriquez · Entrenamiento personalizado · Movimiento con propósito</p>
+    </div>
+  </footer>
+</main>
+</body>
+</html>
