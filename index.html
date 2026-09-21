@@ -3,736 +3,753 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>Daniel Henriquez | Entrenamiento Personal & Movimiento</title>
-  <!-- Google Fonts + Font Awesome -->
+  <title>Daniel Henriquez | Experiencia Indómita</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    /* VARIABLES Y RESET */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #0a0c12; color: #eef2ff; scroll-behavior: smooth; line-height: 1.5; padding-top: 60px; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 70px 0; border-bottom: 1px solid #1a1e2c; }
+    .bg-light { background: #11141f; }
+    .bg-dark-soft { background: #05070c; color: #e0e4f0; }
+    .text-center { text-align: center; }
+    
+    /* MARCA DE AGUA PARA PANTAZOS */
+    .watermark {
+      font-size: 0.7rem; color: rgba(255, 255, 255, 0.25); text-align: right;
+      margin-top: 14px; letter-spacing: 0.5px; font-weight: 500;
+      border-top: 1px dashed rgba(255,255,255,0.08); padding-top: 6px;
     }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #0a0c12;
-      color: #eef2ff;
-      scroll-behavior: smooth;
-      line-height: 1.5;
-    }
+    /* NAVEGACIÓN SUPERIOR */
+    .top-nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(10, 12, 18, 0.95); backdrop-filter: blur(10px); z-index: 1000; display: flex; overflow-x: auto; border-bottom: 1px solid #2a2e3f; padding: 0 12px; }
+    .top-nav::-webkit-scrollbar { display: none; }
+    .top-nav a { color: #eef2ff; text-decoration: none; padding: 18px 16px; font-weight: 600; font-size: 0.9rem; white-space: nowrap; border-bottom: 2px solid transparent; transition: 0.2s; }
+    .top-nav a:hover, .top-nav a.highlight { color: #00f0ff; border-bottom: 2px solid #00f0ff; }
+    .top-nav a.school-link { color: #ff00cc; }
 
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
+    /* BOTONES */
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-weight: 600; padding: 12px 28px; border-radius: 40px; transition: all 0.2s ease; text-decoration: none; font-size: 0.95rem; border: none; cursor: pointer; }
+    .btn-primary { background: #00f0ff; color: #0a0c12; box-shadow: 0 0 8px rgba(0,240,255,0.5); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 14px #00f0ff; }
+    .btn-outline { background: transparent; border: 1.5px solid #00f0ff; color: #00f0ff; }
+    .btn-whatsapp { background: #25D366; color: white; box-shadow: 0 4px 10px rgba(37,211,102,0.3); }
+    .btn-block { width: 100%; justify-content: center; }
 
-    .section {
-      padding: 70px 0;
-    }
-    .section-sm {
-      padding: 40px 0;
-    }
-    .bg-light {
-      background: #11141f;
-    }
-    .bg-dark-soft {
-      background: #05070c;
-      color: #e0e4f0;
-    }
-    .text-center {
-      text-align: center;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      font-weight: 600;
-      padding: 12px 28px;
-      border-radius: 40px;
-      transition: all 0.2s ease;
-      text-decoration: none;
-      font-size: 0.95rem;
-      border: none;
-      cursor: pointer;
-    }
-    .btn-primary {
-      background: #00f0ff;
-      color: #0a0c12;
-      box-shadow: 0 0 8px rgba(0,240,255,0.5);
-    }
-    .btn-primary:hover {
-      background: #00d4e0;
-      transform: translateY(-2px);
-      box-shadow: 0 0 14px #00f0ff;
-    }
-    .btn-outline {
-      background: transparent;
-      border: 1.5px solid #00f0ff;
-      color: #00f0ff;
-    }
-    .btn-outline:hover {
-      background: #00f0ff22;
-      border-color: #00f0ff;
-      color: white;
-    }
-    .btn-whatsapp {
-      background: #25D366;
-      color: white;
-      box-shadow: 0 4px 10px rgba(37,211,102,0.3);
-    }
-    .btn-whatsapp:hover {
-      background: #20b859;
-      transform: translateY(-2px);
-      box-shadow: 0 0 12px #25D366;
-    }
-    .btn-block {
-      width: 100%;
-      justify-content: center;
-    }
+    /* TIPOGRAFÍA Y CITAS */
+    h1, h2, h3 { font-weight: 800; line-height: 1.2; }
+    h2 { font-size: 2rem; margin-bottom: 1rem; letter-spacing: -0.02em; }
+    .section-subhead { font-size: 1.1rem; color: #9ca3af; margin-bottom: 2.5rem; }
+    
+    .quote-divider { padding: 50px 20px; text-align: center; font-size: 1.3rem; font-style: italic; color: #00f0ff; font-weight: 600; line-height: 1.6; background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.05), transparent); border-top: 1px dashed #1a1e2c; border-bottom: 1px dashed #1a1e2c; }
+    .quote-divider span { color: #ff00cc; }
 
-    h1, h2, h3 {
-      font-weight: 800;
-      line-height: 1.2;
-    }
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      letter-spacing: -0.02em;
-    }
-    .section-subhead {
-      font-size: 1.1rem;
-      color: #9ca3af;
-      margin-bottom: 2.5rem;
-    }
+    /* GRILLES Y TARJETAS */
+    .grid-auto { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 32px; }
+    .grid-2cols { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+    .service-card { background: #0f121c; border-radius: 32px; padding: 28px 24px; border: 1px solid #2a2e3f; display: flex; flex-direction: column; }
+    .price { font-size: 2rem; font-weight: 800; margin: 16px 0 8px; color: #fff; }
+    .price small { font-size: 0.9rem; font-weight: 500; color: #9ca3af; }
+    .feature-list { list-style: none; margin: 20px 0 24px; flex-grow: 1; }
+    .feature-list li { margin-bottom: 12px; display: flex; align-items: flex-start; gap: 12px; font-size: 0.9rem; }
+    .feature-list i { color: #00f0ff; margin-top: 4px; }
 
-    .grid-auto {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 32px;
-    }
-    .grid-2cols {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 32px;
-    }
+    /* FORMULARIOS CALCULADORAS */
+    .calc-card { background: #1a1e2c; border-radius: 24px; padding: 24px; border: 1px solid #2a2e3f; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; margin-bottom: 8px; font-size: 0.9rem; color: #9ca3af; }
+    .form-control { width: 100%; padding: 12px; border-radius: 12px; border: 1px solid #2a2e3f; background: #0f121c; color: white; font-family: 'Inter'; font-size: 1rem; }
+    .form-control:focus { outline: 1px solid #00f0ff; }
+    .calc-result { margin-top: 20px; padding: 16px; background: #0a0c12; border-radius: 12px; text-align: center; font-size: 1.1rem; color: #eef2ff; border: 1px solid #00f0ff; }
 
-    .service-card {
-      background: #0f121c;
-      border-radius: 32px;
-      padding: 28px 24px;
-      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.5);
-      transition: all 0.25s;
-      border: 1px solid #2a2e3f;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      backdrop-filter: blur(2px);
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-    }
-    .service-card:hover {
-      transform: translateY(-6px);
-      border-color: #00f0ff;
-      box-shadow: 0 0 18px rgba(0,240,255,0.2);
-    }
-    .premium-badge {
-      background: #ff00cc;
-      color: white;
-      font-size: 0.7rem;
-      font-weight: 800;
-      padding: 4px 12px;
-      border-radius: 50px;
-      display: inline-block;
-      margin-bottom: 16px;
-      letter-spacing: 0.5px;
-      box-shadow: 0 0 6px #ff00cc;
-    }
-    .card-icon {
-      font-size: 2.4rem;
-      margin-bottom: 20px;
-      color: #00f0ff;
-    }
-    .price {
-      font-size: 2rem;
-      font-weight: 800;
-      margin: 16px 0 8px;
-      color: #fff;
-    }
-    .price small {
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: #9ca3af;
-    }
-    .old-price {
-      text-decoration: line-through;
-      font-size: 1rem;
-      color: #9ca3af;
-      margin-right: 8px;
-    }
-    .feature-list {
-      list-style: none;
-      margin: 20px 0 24px;
-      flex-grow: 1;
-    }
-    .feature-list li {
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 0.9rem;
-    }
-    .feature-list i {
-      color: #25D366;
-      width: 20px;
-      font-size: 1rem;
-    }
-    .pricing-plan {
-      background: #1a1e2c;
-      border-radius: 24px;
-      padding: 16px;
-      margin: 20px 0 16px;
-      border-left: 3px solid #00f0ff;
-    }
-    .prepay-note {
-      font-size: 0.75rem;
-      color: #ffaa66;
-      margin-top: 8px;
-      text-align: center;
-      background: #2a1e0c;
-      border-radius: 40px;
-      padding: 4px 12px;
-      display: inline-block;
-      width: auto;
-    }
-    hr {
-      margin: 24px 0;
-      border: none;
-      border-top: 1px solid #2a2e3f;
-    }
-    .social-stats {
-      display: flex;
-      gap: 28px;
-      justify-content: center;
-      margin: 20px 0 0;
-      flex-wrap: wrap;
-    }
-    .stat-item {
-      text-align: center;
-    }
-    .stat-number {
-      font-weight: 800;
-      font-size: 1.5rem;
-      color: #00f0ff;
-    }
-    .hero {
-      padding: 60px 0 40px;
-    }
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-    .hero-badge {
-      background: #00f0ff22;
-      border: 1px solid #00f0ff;
-      color: #00f0ff;
-      padding: 5px 15px;
-      border-radius: 40px;
-      font-weight: 500;
-      display: inline-block;
-      margin-bottom: 20px;
-    }
-    .cofounder-card {
-      background: linear-gradient(135deg, #11141f, #0a0c12);
-      border-radius: 32px;
-      padding: 32px;
-      border: 1px solid #2a2e3f;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-    .tuesday-class {
-      border-radius: 40px;
-      padding: 32px;
-      background: #0f121c;
-      border-left: 6px solid #ff00cc;
-      box-shadow: 0 0 12px rgba(255,0,204,0.2);
-    }
-    .discipline-addon {
-      background: #1a1e2c;
-      border-radius: 20px;
-      padding: 12px;
-      margin-top: 12px;
-      font-size: 0.85rem;
-      border: 1px solid #ff00cc33;
-    }
-    @media (max-width: 860px) {
-      .grid-2cols {
-        grid-template-columns: 1fr;
-      }
-      .hero h1 {
-        font-size: 2.2rem;
-      }
-      .container {
-        padding: 0 20px;
-      }
-      .section {
-        padding: 50px 0;
-      }
-      .cofounder-card {
-        flex-direction: column;
-        text-align: center;
-      }
-    }
-    .footer {
-      background: #05070c;
-      color: #9ca3af;
-      padding: 48px 0 32px;
-      margin-top: 20px;
-      border-top: 1px solid #2a2e3f;
-    }
-    .social-links a {
-      color: #eef2ff;
-      margin: 0 12px;
-      font-size: 1.4rem;
-      transition: 0.2s;
-    }
-    .social-links a:hover {
-      color: #00f0ff;
-      text-shadow: 0 0 5px #00f0ff;
-    }
-    .floating-wa {
-      position: fixed;
-      bottom: 28px;
-      right: 28px;
-      background: #25D366;
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-      z-index: 99;
-      transition: 0.2s;
-    }
-    .floating-wa:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 12px #25D366;
-    }
-    .floating-wa i {
-      color: white;
-      font-size: 28px;
-    }
-    .workshop-note {
-      font-size: 0.75rem;
-      margin-top: 12px;
-      color: #9ca3af;
-    }
-    .price-badge {
-      background: #2a2e3f;
-      border-radius: 40px;
-      padding: 4px 12px;
-      font-weight: 600;
-      display: inline-block;
-      margin: 10px 0;
-      font-size: 0.8rem;
-    }
-    .single-class {
-      border-top: 1px dashed #2a2e3f;
-      margin-top: 16px;
-      padding-top: 16px;
-    }
-    .neon-text {
-      text-shadow: 0 0 3px #00f0ff;
-    }
-    .grupal-list {
-      margin: 16px 0;
-    }
-    .grupal-list p {
-      margin-bottom: 12px;
-    }
-    .free-workshop {
-      background: linear-gradient(145deg, #0f121c, #0b0e16);
-      border-color: #00f0ff;
-    }
+    /* GRAFICO GASTO ENERGETICO */
+    .energy-chart-wrapper { background: #1a1e2c; padding: 24px; border-radius: 24px; margin: 30px 0; border: 1px solid #2a2e3f; }
+    .energy-bar-container { display: flex; width: 100%; height: 40px; border-radius: 20px; overflow: hidden; margin-bottom: 16px; }
+    .energy-segment { display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.8rem; color: #000; transition: width 0.5s ease; }
+    .energy-legend { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; font-size: 0.85rem; }
+    .legend-item { display: flex; align-items: center; gap: 6px; }
+    .legend-color { width: 12px; height: 12px; border-radius: 3px; }
+
+    /* TABLA RIR/EPSE */
+    .rpe-table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 0.9rem; }
+    .rpe-table th { background: #2a2e3f; color: #fff; padding: 10px; text-align: left; }
+    .rpe-table td { padding: 10px; border-bottom: 1px solid #2a2e3f; }
+    .rpe-table tr:hover { background: #0f121c; }
+
+    /* ANIMACIONES Y DESPLEGABLES */
+    .toggle-content { display: none; margin-top: 24px; animation: fadeIn 0.4s ease; text-align: left; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    .bio-card { background: #1a1e2c; border-radius: 24px; padding: 24px; border-left: 4px solid #00f0ff; }
+
+    .hero { padding: 60px 0 40px; text-align: center; }
+    .hero h1 { font-size: 2.8rem; margin-bottom: 1rem; }
+    
+    .floating-wa { position: fixed; bottom: 28px; right: 28px; background: #25D366; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(0,0,0,0.3); z-index: 99; transition: 0.2s; text-decoration: none; color: white; }
+    .floating-wa:hover { transform: scale(1.05); }
+    .floating-wa i { color: white; font-size: 28px; }
+
+    @media (max-width: 860px) { .grid-2cols { grid-template-columns: 1fr; } .hero h1 { font-size: 2.2rem; } .energy-segment span { display: none; } }
   </style>
 </head>
 <body>
 
-<!-- WHATSAPP FLOATING BUTTON -->
-<a href="https://wa.me/56935541341?text=Hola%20Daniel!%20Vi%20tu%20web%20y%20quiero%20consultar%20por%20tus%20servicios%20💪" 
-   class="floating-wa" target="_blank" rel="noopener noreferrer">
-  <i class="fab fa-whatsapp"></i>
-</a>
+<nav class="top-nav">
+  <a href="#inicio">Inicio</a>
+  <a href="#planes">Planes</a>
+  <a href="#clases-regulares">Talleres Regulares</a>
+  <a href="#herramientas">Herramientas</a>
+  <a href="#habitos-section">Hábitos & Ciencia</a>
+  <a href="#bases" class="highlight">⚠️ Bases y Reglas</a>
+  <a href="#escuela" class="school-link">🎪 Dilo Con Movimiento</a>
+</nav>
 
-<main>
+<a href="https://wa.me/56935541341?text=Hola%20Daniel!%20Vi%20tu%20web%20y%20quiero%20consultar%20por%20tus%20servicios" class="floating-wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+<main id="inicio">
   <!-- HERO SECTION -->
   <div class="container hero">
-    <div class="text-center">
-      <div class="hero-badge">
-        <i class="fas fa-bolt"></i> Téc. Superior Preparación Física | +10 años de experiencia
+    <div style="background: #00f0ff22; border: 1px solid #00f0ff; color: #00f0ff; padding: 5px 15px; border-radius: 40px; display: inline-block; margin-bottom: 20px; font-size: 0.9rem;">
+      <i class="fas fa-bolt"></i> Téc. Superior Preparación Física | +10 años
+    </div>
+    <h1>Experiencia Indómita</h1>
+    <h3 style="color:#00f0ff; margin-bottom: 20px; font-weight: 500;">Por Daniel Henriquez</h3>
+    
+    <p style="font-size: 1.15rem; max-width: 800px; margin: 0 auto 20px; color: #cbd5e1; line-height: 1.6;">
+      Bienvenid@. Este es un sistema de entrenamiento que se adecúa a tus necesidades reales, con metodologías fundamentadas en las ciencias de la actividad física. Mi objetivo es darles uso para desarrollar <strong>la versión más indómita de tu persona</strong>.
+    </p>
+    <p style="font-size: 1.3rem; font-weight: 700; color: #ff00cc; margin-bottom: 30px;">
+      "No se espera estar list@ para empezar, se empieza y te vas alistando en el proceso. Estamos aquí para apoyar tus procesos."
+    </p>
+
+    <button onclick="toggleSection('quien-soy')" class="btn btn-outline" style="margin-bottom: 20px;">
+      <i class="fas fa-user"></i> ¿Quién soy?
+    </button>
+
+    <div id="quien-soy" class="toggle-content">
+      <div class="bio-card" style="max-width: 800px; margin: 0 auto;">
+        <h3 style="margin-bottom: 12px;">Sobre mí</h3>
+        <p style="color: #cbd5e1; margin-bottom: 12px;">Soy Técnico Superior en Preparación Física con más de 10 años de experiencia transformando el movimiento y la salud. Especialista en dominio corporal, acrobacias, breakdance y preparación física de alto nivel.</p>
+        <p style="color: #cbd5e1;">Además, soy co-fundador de <strong>"Dilo Con Movimiento"</strong>, una escuela comunitaria de circo urbano. Mi filosofía de trabajo huye de las demostraciones vacías y se centra en <strong>ciencia + experiencia real</strong>.</p>
+        <div class="watermark">Experiencia Indómita · @dany.el.trainer</div>
       </div>
-      <h1>Daniel Henriquez<br><span style="color:#00f0ff;">Dominio Corporal & Entrenador Personal</span></h1>
-      <p style="font-size: 1.2rem; max-width: 700px; margin: 20px auto; color: #cbd5e1;">
-        Optimizo tu salud, condición física y rendimiento. <strong>Rutinas personalizadas</strong> (online/presencial/grupal) 
-        con enfoque científico y humano. Especialista en acrobacias, breakdance, firestaff y preparación física de alto nivel.
-      </p>
-      <div class="social-stats">
-        <div class="stat-item"><span class="stat-number">713+</span><br>publicaciones</div>
-        <div class="stat-item"><span class="stat-number">1.6K</span><br>seguidores IG</div>
-        <div class="stat-item"><span class="stat-number">+40</span><br>clientes activos</div>
-      </div>
-      <div style="margin-top: 32px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-        <a href="#planes" class="btn btn-primary"><i class="fas fa-dumbbell"></i> Ver planes y precios</a>
-        <a href="https://instagram.com/dany.el.trainer" target="_blank" class="btn btn-outline"><i class="fab fa-instagram"></i> @dany.el.trainer</a>
-      </div>
+    </div>
+    
+    <div style="background: #1a1e2c; border-left: 4px solid #25D366; padding: 16px; border-radius: 12px; max-width: 600px; margin: 30px auto; text-align: left;">
+      <h4 style="margin-bottom: 8px; display: flex; align-items: center; gap: 8px;"><i class="fas fa-bullhorn" style="color:#25D366;"></i> Novedades y Horarios Actualizados</h4>
+      <p style="font-size: 0.9rem; color: #9ca3af; margin-bottom: 12px;">Para conocer nuevos talleres o cambios de horario, revisa siempre nuestras comunidades oficiales.</p>
+      <a href="https://chat.whatsapp.com/Fv0KSE9euwkBzCTHk4KdpT" target="_blank" style="color: #25D366; text-decoration: none; font-weight: bold; font-size: 0.9rem;"><i class="fab fa-whatsapp"></i> Únete al grupo de WhatsApp</a>
     </div>
   </div>
 
-  <!-- SERVICIOS PRINCIPALES (4 TARJETAS) -->
-  <div class="bg-light" id="planes">
-    <div class="container section">
-      <div class="text-center">
-        <h2>Elige el camino hacia tu mejor versión</h2>
-        <p class="section-subhead">Entrenamientos 100% personalizados · Seguimiento real · Resultados con ciencia y experiencia</p>
-        <div class="prepay-note" style="margin-bottom: 20px;">⚠️ Todos los planes y servicios de pago son prepago: se pagan al inicio del ciclo (mensual o por sesión).</div>
-      </div>
-      
-      <div class="grid-auto">
-        <!-- 1. ASINCRÓNICO PREMIUM -->
-        <div class="service-card">
-          <div class="premium-badge"><i class="fas fa-crown"></i> MÁS VENDIDO · PREMIUM</div>
-          <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
-          <h3>Online Asincrónico</h3>
-          <p style="margin: 8px 0 4px; font-weight: 500;">Entrena donde quieras, cuando quieras</p>
-          <div class="price"><span class="old-price">$50.000</span> $45.000 <small>/ mes</small></div>
-          <p style="font-size: 0.85rem; color:#9ca3af;">hasta 4 rutinas semanales (16 sesiones/mes) · Evaluación + seguimiento</p>
-          <ul class="feature-list">
-            <li><i class="fas fa-check-circle"></i> Evaluación inicial online</li>
-            <li><i class="fas fa-check-circle"></i> Planificación mensual 100% personalizada</li>
-            <li><i class="fas fa-check-circle"></i> Seguimiento vía chat + revisión de técnica en vídeo</li>
-            <li><i class="fas fa-check-circle"></i> Controles de progreso cada 15 días</li>
-          </ul>
-          <div class="pricing-plan">
-            <strong>✔ Incluye base:</strong> Mejora de fuerza, acondicionamiento físico, salud, agilidad, estabilidad y rendimiento general.<br>
-            <span style="font-size: 0.85rem;">✅ El entrenamiento puede enfocarse en tu área de interés (acrobacia, breaking, etc.) pero sin metodología disciplinaria específica a menos que se contrate el adicional.</span>
-          </div>
-          <div class="discipline-addon">
-            <i class="fas fa-plus-circle"></i> <strong>➕ Adicional por disciplina específica (+$5.000/mes)</strong><br>
-            Elige una: Acrobacia, Breaking o Firestaff. Incluye metodología progresiva y ejercicios específicos para desarrollar habilidades artísticas/deportivas.
-          </div>
-          <a href="https://wa.me/56935541341?text=Hola%20Daniel!%20Quiero%20el%20PLAN%20ASINCRÓNICO%20PREMIUM%20($45.000)%20y%20me%20interesa%20agregar%20desarrollo%20disciplinario%20(acrobacia/breaking/firestaff)%20por%20%245.000%20adicionales.%20Cuéntame%20más." 
-             target="_blank" class="btn btn-whatsapp btn-block" style="margin-top: 12px;"><i class="fab fa-whatsapp"></i> Contratar ahora</a>
-        </div>
-
-        <!-- 2. ONLINE SINCRÓNICO (con clase suelta) -->
-        <div class="service-card">
-          <div class="card-icon"><i class="fas fa-video"></i></div>
-          <h3>Online Sincrónico</h3>
-          <p style="margin-bottom: 8px;">Entrena conmigo en vivo · Google Meet</p>
-          <div class="price">$45.000 <small>/ mes</small> <span style="font-size: 0.9rem;">(1 vez/semana)</span></div>
-          <div class="price" style="font-size: 1.6rem;">$85.000 <small>/ mes</small> <span style="font-size: 0.8rem;">(2 veces/semana)</span></div>
-          <ul class="feature-list">
-            <li><i class="fas fa-check-circle"></i> Sesiones guiadas en tiempo real, corrección instantánea</li>
-            <li><i class="fas fa-check-circle"></i> Rutinas adaptadas a tu nivel y espacio</li>
-            <li><i class="fas fa-check-circle"></i> Enfoque en disciplinas (acrobacia, breaking, firestaff) <strong>sin costo adicional</strong></li>
-          </ul>
-          <div class="pricing-plan">
-            <strong>✔ Incluye base:</strong> Mejora de fuerza, salud, agilidad, estabilidad y rendimiento general.<br>
-            ✅ Las clases en tiempo real pueden enfocarse en desarrollo de habilidades acrobáticas, breaking o firestaff, todo incluido.
-          </div>
-          <div class="single-class">
-            <div class="price-badge"><i class="fas fa-ticket-alt"></i> Clase suelta online: $12.000</div>
-            <p style="font-size: 0.8rem; margin-top: 8px;">*No incluye evaluaciones ni seguimiento. Planificación mediante packs de contenidos (consultar listado). Clase válida hasta 2 personas mismo valor.</p>
-          </div>
-          <a href="https://wa.me/56935541341?text=Hola%20Daniel!%20Quiero%20contratar%20entrenamiento%20ONLINE%20SINCRÓNICO%20(mensual%20o%20clase%20suelta)%20y%20saber%20disponibilidad." 
-             target="_blank" class="btn btn-whatsapp btn-block" style="background:#075E54; margin-top: 12px;"><i class="fab fa-whatsapp"></i> Agendar videollamada</a>
-        </div>
-
-        <!-- 3. PRESENCIAL A DOMICILIO (con clase suelta) -->
-        <div class="service-card">
-          <div class="card-icon"><i class="fas fa-home"></i></div>
-          <h3>Presencial a Domicilio</h3>
-          <p>Clases 1:1 en Santiago (o lugar a convenir dentro de la ciudad)</p>
-          <div class="price">$55.000 <small>/ mes</small> <span style="font-size: 0.8rem;">(1 vez/semana)</span></div>
-          <div class="price" style="font-size: 1.6rem;">$100.000 <small>/ mes</small> <span style="font-size: 0.8rem;">(2 veces/semana)</span></div>
-          <ul class="feature-list">
-            <li><i class="fas fa-check-circle"></i> Corrección en tiempo real, técnica perfecta</li>
-            <li><i class="fas fa-check-circle"></i> Evaluación completa + seguimiento personal</li>
-            <li><i class="fas fa-check-circle"></i> Enfoque en disciplinas (acrobacia, breaking, firestaff) <strong>sin costo adicional</strong></li>
-          </ul>
-          <div class="pricing-plan">
-            <strong>✔ Incluye base:</strong> Mejora de fuerza, salud, agilidad, estabilidad y rendimiento general.<br>
-            ✅ Clases presenciales con metodología para desarrollo de habilidades específicas incluidas.
-          </div>
-          <div class="single-class">
-            <div class="price-badge"><i class="fas fa-ticket-alt"></i> Clase suelta presencial: $15.000</div>
-            <p style="font-size: 0.8rem; margin-top: 8px;">*No incluye evaluaciones ni seguimiento. Planificación mediante packs de contenidos (consultar listado). Clase válida hasta 2 personas mismo valor.</p>
-          </div>
-          <a href="https://wa.me/56935541341?text=Hola%20Daniel!%20Quiero%20entrenamiento%20PRESENCIAL%20a%20domicilio%20en%20Santiago%20(mensual%20o%20clase%20suelta)%20y%20conocer%20horarios." 
-             target="_blank" class="btn btn-whatsapp btn-block"><i class="fab fa-whatsapp"></i> Reservar sesión</a>
-        </div>
-
-        <!-- 4. GRUPAL (valores online explícitos) -->
-        <div class="service-card">
-          <div class="card-icon"><i class="fas fa-users"></i></div>
-          <h3>Entrenamiento Grupal</h3>
-          <p>Online o presencial (grupos reducidos hasta 10 personas)</p>
-          <div class="grupal-list">
-            <p><strong>✔ Hasta 5 personas:</strong> Presencial $20.000 / Online $15.000 (por sesión)</p>
-            <p><strong>✔ 6 a 10 personas:</strong> Presencial $30.000 / Online $22.000 (por sesión)</p>
-          </div>
-          <div class="pricing-plan">
-            <i class="fas fa-calendar-alt"></i> Ideal para grupos de amigos, familias o equipos. Trabajamos condición física, habilidades y diversión.
-          </div>
-          <a href="https://wa.me/56935541341?text=Hola%20Daniel!%20Quiero%20armar%20un%20grupo%20de%20entrenamiento%20grupal%20(online/presencial)%20de%20hasta%2010%20personas%20y%20necesito%20cotización." 
-             target="_blank" class="btn btn-whatsapp btn-block"><i class="fab fa-whatsapp"></i> Consultar grupo</a>
-        </div>
-      </div>
-
-      <!-- WORKSHOP (item independiente) -->
-      <div style="margin-top: 48px;">
-        <div class="service-card" style="background: linear-gradient(145deg, #0f121c, #0b0e16); border-color: #ff00cc;">
-          <div class="card-icon"><i class="fas fa-chalkboard-user"></i></div>
-          <h3>🎯 Workshops especializados</h3>
-          <p>Para grupos de más de 10 personas o eventos fuera de Santiago (RM o regiones). Temáticas: Acrobacia, Breaking, Firestaff, Acondicionamiento físico, etc.</p>
-          <ul class="feature-list">
-            <li><i class="fas fa-check-circle"></i> Contenido adaptado a tu público objetivo</li>
-            <li><i class="fas fa-check-circle"></i> Duración, lugar y materiales a convenir</li>
-            <li><i class="fas fa-check-circle"></i> Valor según cantidad de asistentes, horas y desplazamiento</li>
-          </ul>
-          <div class="pricing-plan">
-            📌 Solicita cotización personalizada vía WhatsApp o correo electrónico.
-          </div>
-          <a href="https://wa.me/56935541341?text=Hola%20Daniel!%20Quiero%20solicitar%20un%20WORKSHOP%20grupal%20(acrobacia/breaking/firestaff/condición%20física)%20para%20más%20de%2010%20personas%20o%20fuera%20de%20Santiago.%20Por%20favor%20dame%20información." 
-             target="_blank" class="btn btn-outline btn-block"><i class="fab fa-whatsapp"></i> Consultar workshop</a>
-        </div>
-      </div>
-    </div>
+  <div class="quote-divider">
+    "Domina la fuerza, flexibilidad, habilidad y destrezas para la vida diaria,<br><span>y mejora tu calidad de vida.</span>"
   </div>
 
-  <!-- CLASES ESPECIALIZADAS: ACROBACIA, BREAKING, FIRESTAFF -->
-  <div class="container section">
-    <div class="text-center">
-      <h2>🔥 Disciplinas de expresión corporal & movimiento</h2>
-      <p class="section-subhead">Acrobacias · Breakdance · Firestaff (vara de fuego)</p>
-    </div>
-    <div class="grid-2cols">
-      <!-- ACROBACIAS (horario y ubicación detallada) -->
-      <div class="service-card" style="background: #0f121c;">
-        <div class="card-icon"><i class="fas fa-hand-fist"></i></div>
-        <h3>Taller de Acrobacias</h3>
-        <p><strong>Clases presenciales grupales</strong> · Todos los jueves</p>
-        <div style="background: #1a1e2c; border-radius: 24px; padding: 12px; margin: 16px 0;">
-          <i class="fas fa-clock"></i> <strong>Jueves 19:30 a 21:00 hrs</strong><br>
-          <i class="fas fa-map-pin"></i> Cancha El Sauce, Portales 1095, El Bosque<br>
-          <span style="font-weight: 800; color:#00f0ff;">📌 Valor: $4.000 efectivo / $6.000 transferencia</span>
-        </div>
-        <ul class="feature-list">
-          <li><i class="fas fa-check-circle"></i> Preacrobáticos y fundamentos del movimiento</li>
-          <li><i class="fas fa-check-circle"></i> Rutinas de preparación física acordes al contenido</li>
-          <li><i class="fas fa-check-circle"></i> Metodología progresiva: vinculando conocimientos preacrobáticos con las clases</li>
-          <li><i class="fas fa-check-circle"></i> Desarrollo de volteretas, handstand, saltos y secuencias</li>
-        </ul>
-        <a href="https://wa.me/56935541341?text=Hola%20Daniel!%20Me%20interesa%20más%20información%20para%20asistir%20a%20las%20clases%20de%20ACROBACIAS%20(los%20jueves%20en%20El%20Bosque).%20Por%20favor%20cuéntame%20detalles." 
-           target="_blank" class="btn btn-outline btn-block"><i class="fab fa-whatsapp"></i> Reserva tu cupo</a>
-      </div>
-
-      <!-- BREAKING (con nuevo ítem de expresión corporal) -->
-      <div class="service-card" style="background: #0f121c;">
-        <div class="card-icon"><i class="fas fa-music"></i></div>
-        <h3>Breaking | Breakdance</h3>
-        <p>Escuela de Circo Urbano · Expresión corporal escénica</p>
-        <div style="background: #1a1e2c; border-radius: 20px; padding: 10px; margin: 12px 0;">
-          <i class="fas fa-calendar-week"></i> <strong>Sábados 11:00 a 14:00 hrs</strong><br>
-          <i class="fas fa-location-dot"></i> Sede Comunitaria, Portales 1095, El Bosque<br>
-          <span style="font-weight: 800; color:#00f0ff;">📌 Valor: $4.000 efectivo / $6.000 transferencia (por clase)</span>
-        </div>
-        <ul class="feature-list">
-          <li><i class="fas fa-check-circle"></i> Fundamentos de powermoves, footwork, freezes</li>
-          <li><i class="fas fa-check-circle"></i> Rutinas de acondicionamiento específico para breaking</li>
-          <li><i class="fas fa-check-circle"></i> Metodología progresiva desde cero hasta nivel avanzado</li>
-          <li><i class="fas fa-check-circle"></i> Expresión corporal basada en el desarrollo de experiencias físicas</li>
-        </ul>
-        <p>📌 Planes mensuales o semestrales: consultar en <strong>"Dilo Con Movimiento - Circo Urbano"</strong> → <a href="https://danyeltrainer.github.io/DILO-CON-MOVIMIENTO" target="_blank" style="color:#00f0ff; text-decoration:underline;">ver sitio oficial</a></p>
-        <a href="https://wa.me/56935541341?text=Hola%20Daniel!%20Me%20interesa%20más%20información%20para%20asistir%20a%20las%20clases%20de%20BREAKING%20(los%20sábados%20en%20El%20Bosque).%20Quiero%20saber%20valores%20y%20disponibilidad." 
-           target="_blank" class="btn btn-outline btn-block"><i class="fab fa-whatsapp"></i> Consultar breaking</a>
-      </div>
-    </div>
-
-    <!-- FIRESTAFF con aclaración de presencial en RM y workshop grupal -->
-    <div style="margin-top: 32px;">
-      <div class="service-card" style="background: #0f121c; border-color: #ff8800;">
-        <div class="card-icon"><i class="fas fa-fire" style="color:#ff8800;"></i></div>
-        <h3 style="color:#ffb347;">🔥 Firestaff · Vara de fuego</h3>
-        <p>Enseñanza desde fundamentos: combustible, riesgos, vestimenta, técnicas de manejo y secuencias coreográficas.</p>
-        <div class="grid-2cols" style="gap: 12px; margin: 16px 0; display: flex; flex-wrap: wrap;">
-          <div class="price-badge" style="background:#1a1e2c;">💻 Online: $12.000 (clase suelta)</div>
-          <div class="price-badge" style="background:#1a1e2c;">🏠 Presencial (RM): $15.000 / $18.000 transferencia</div>
-        </div>
-        <ul class="feature-list">
-          <li><i class="fas fa-check-circle"></i> Seguridad y protocolos</li>
-          <li><i class="fas fa-check-circle"></i> Técnicas básicas y avanzadas de giros/figuras</li>
-          <li><i class="fas fa-check-circle"></i> Se enseñan básicos de acrobacia integrados</li>
-        </ul>
-        <p class="workshop-note">🔥 Para potenciar aún más tu expresión física y corporal, se recomienda complementar con el <strong>taller de acrobacias</strong> y/o <strong>breaking</strong>.<br>
-        📌 Clases grupales de firestaff: solicitar como <strong>workshop</strong> (cotizar según cantidad de personas).</p>
-        <a href="https://wa.me/56935541341?text=Hola%20Daniel!%20Me%20interesa%20aprender%20FIRESTAFF%20(vara%20de%20fuego)%20y%20quiero%20información%20sobre%20clases%20(online%20o%20presencial%20en%20RM)%20y%20valores." 
-           target="_blank" class="btn btn-primary" style="background:#ff8800; color:#0a0c12;"><i class="fab fa-whatsapp"></i> Consultar firestaff</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- NUEVO TALLER GRATUITO: CALISTENIA + FUNCIONAL (Municipio Lo Espejo) con días y horarios -->
-  <div class="bg-light">
-    <div class="container section">
-      <div class="service-card free-workshop" style="border-color: #00f0ff; background: linear-gradient(145deg, #0f121c, #0b0e16);">
-        <div class="card-icon"><i class="fas fa-tree"></i></div>
-        <h3>🌿 Taller Gratuito de Calistenia y Entrenamiento Funcional</h3>
-        <p>En colaboración con el <strong>Municipio de Lo Espejo</strong> · Para mayores de 14 años (no excluyente)</p>
-        <div style="background: #1a1e2c; border-radius: 24px; padding: 16px; margin: 16px 0;">
-          <i class="fas fa-calendar-alt"></i> <strong>Lunes y Miércoles · 18:00 a 19:30 hrs</strong><br>
-          <i class="fas fa-map-marker-alt"></i> <strong>Plaza San Lucas</strong> - Pedro Lira 9915, Lo Espejo<br>
-          <i class="fab fa-instagram"></i> Instagram: <a href="https://instagram.com/Plaza_lucas_san" target="_blank" style="color:#00f0ff;">@Plaza_lucas_san</a>
-        </div>
-        <ul class="feature-list">
-          <li><i class="fas fa-heartbeat"></i> Mejora y desarrollo de la condición física para la salud</li>
-          <li><i class="fas fa-hand-peace"></i> Desarrollo de habilidades: Handstand (parada de manos), secuencias en paralelas, muscle up, entre otras</li>
-          <li><i class="fas fa-tint"></i> Entrenamiento metabólico dirigido para personas con hipertensión arterial y diabetes</li>
-          <li><i class="fas fa-sun"></i> Entrenamiento al aire libre, optimizando tolerancia a cambios de temperatura y humedad (te enfermas menos)</li>
-        </ul>
-        <div class="pricing-plan" style="background:#00f0ff10; border-color:#00f0ff;">
-          ✅ <strong>Totalmente gratuito</strong> · Abierto a toda la comunidad
-        </div>
-        <a href="https://wa.me/56935541341?text=Hola%20Daniel!%20Me%20interesa%20el%20taller%20gratuito%20de%20CALISTENIA%20en%20Plaza%20San%20Lucas%20(Lo%20Espejo)%20los%20lunes%20y%20miércoles%2018-19:30.%20Quiero%20más%20información." 
-           target="_blank" class="btn btn-outline btn-block"><i class="fab fa-whatsapp"></i> Consultar taller gratuito</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- PROYECTO MARTES 9AM -->
-  <div class="container section">
-    <div class="tuesday-class">
-      <div class="text-center">
-        <span class="premium-badge" style="background:#ff00cc;">NUEVO PROYECTO · LANZAMIENTO</span>
-        <h2 style="margin-top: 12px;">🌅 Clases grupales online: Martes 9:00 AM</h2>
-        <p style="font-size: 1.1rem; max-width: 700px; margin: 16px auto;">Desarrollo integral de la condición física: capacidades para la vida diaria, compensación postural, flexibilidad, fuerza, estabilidad, habilidades acrobáticas y agilidad. <strong>Movimiento con conexión y reflexión corporal</strong>.</p>
-        <div style="background: #1a1e2c; border-radius: 32px; padding: 20px; display: inline-block; margin: 20px 0;">
-          <i class="fas fa-calendar-check"></i> <strong>Martes 14 de abril · 9:00 AM (Google Meet)</strong><br>
-          <span style="font-size: 1.5rem; font-weight: 800; color:#00f0ff;">🎁 PRIMERA CLASE GRATUITA</span><br>
-          <span>Con inscripción previa. Para todos los niveles.</span>
-        </div>
-        <p>Valor regular por clase: <strong>$3.000</strong> (precio de lanzamiento).</p>
-        <a href="https://wa.me/56935541341?text=Hola%20Daniel!%20Me%20interesa%20la%20clase%20grupal%20del%20martes%209am%20del%2014%20abril%20(GRATUITA)%20y%20quiero%20inscribirme.%20Mi%20nombre%20es..." 
-           target="_blank" class="btn btn-primary" style="background:#00f0ff; color:#000;"><i class="fab fa-whatsapp"></i> Inscribirme a clase gratuita</a>
-        <p style="margin-top: 18px; font-size: 0.85rem;">📌 Cupos limitados · Clases semanales después del lanzamiento</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- ASESORÍA PREMIUM ONLINE (beneficios) -->
-  <div class="bg-light">
-    <div class="container section">
-      <div class="text-center">
-        <h2>🚀 ¿Por qué elegir mi asesoría premium online?</h2>
-        <p class="section-subhead">No se trata de demostraciones vacías, sino de ciencia + experiencia real</p>
-      </div>
-      <div style="display: flex; flex-wrap: wrap; gap: 32px; justify-content: center;">
-        <div style="flex:1; min-width: 230px;">
-          <i class="fas fa-flask" style="font-size: 2rem; color:#00f0ff;"></i>
-          <h3 style="margin: 10px 0;">Conocimiento científico aplicado</h3>
-          <p>Basado en evidencia, biomecánica y fisiología del ejercicio.</p>
-        </div>
-        <div style="flex:1; min-width: 230px;">
-          <i class="fas fa-history" style="font-size: 2rem; color:#00f0ff;"></i>
-          <h3 style="margin: 10px 0;">+10 años transformando vidas</h3>
-          <p>Experiencia con cientos de personas: salud, rehabilitación y rendimiento.</p>
-        </div>
-        <div style="flex:1; min-width: 230px;">
-          <i class="fas fa-chart-line" style="font-size: 2rem; color:#00f0ff;"></i>
-          <h3 style="margin: 10px 0;">Planificación integral</h3>
-          <p>Evaluación, seguimiento continuo y ajustes en tiempo real.</p>
-        </div>
-      </div>
-      <div class="text-center" style="margin-top: 44px;">
-        <a href="https://wa.me/56935541341?text=Hola%20Daniel,%20quiero%20saber%20más%20sobre%20la%20asesoría%20ONLINE%20ASINCRÓNICA%20y%20sus%20beneficios%20científicos." 
-           class="btn btn-primary" style="background:#00f0ff; color:#000;"><i class="fab fa-whatsapp"></i> Quiero asesoría premium →</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- CO-FUNDADOR DILO CON MOVIMIENTO + COMUNIDAD WHATSAPP -->
-  <div class="container section-sm">
-    <div class="cofounder-card">
-      <div>
-        <i class="fas fa-users" style="font-size: 2rem; color:#00f0ff;"></i>
-        <h3 style="margin: 8px 0 12px;">🌱 Co-fundador de "DILO CON MOVIMIENTO"</h3>
-        <p style="max-width: 500px;">Estudio de movimiento humano donde profundizamos en biomecánica, movilidad funcional y rendimiento consciente. <strong>Únete a nuestra comunidad</strong> y descubre talleres exclusivos.</p>
-      </div>
-      <div>
-        <a href="https://danyeltrainer.github.io/DILO-CON-MOVIMIENTO" target="_blank" class="btn btn-primary" style="background:#00f0ff; color:#000;">
-          <i class="fas fa-external-link-alt"></i> Conocer DILO CON MOVIMIENTO
-        </a>
-        <div style="margin-top: 16px;">
-          <a href="https://chat.whatsapp.com/Fv0KSE9euwkBzCTHk4KdpT" target="_blank" class="btn btn-outline" style="border-color:#25D366; color:#25D366;">
-            <i class="fab fa-whatsapp"></i> Unirse a la comunidad WhatsApp
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- LLAMADA FINAL -->
-  <div class="bg-dark-soft">
-    <div class="container section" style="text-align: center;">
-      <h3 style="color: white; margin-bottom: 16px;">¿Qué espera para conocer tu mejor versión?</h3>
-      <div style="display: flex; flex-wrap: wrap; gap: 18px; justify-content: center;">
-        <a href="https://wa.me/56935541341?text=Hola%20Daniel,%20quiero%20agendar%20una%20consulta%20gratuita%20para%20elegir%20mi%20plan%20de%20entrenamiento%20y%20conocer%20tu%20metodología." 
-           class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Agenda tu asesoría sin costo</a>
-        <a href="https://instagram.com/dany.el.trainer" target="_blank" class="btn btn-outline"><i class="fab fa-instagram"></i> Sígueme en Instagram</a>
-        <a href="https://youtube.com/@danieltrainer6130" target="_blank" class="btn btn-outline"><i class="fab fa-youtube"></i> YouTube</a>
-      </div>
-      <p style="margin-top: 28px; font-size: 0.85rem;">📧 Para proyectos, instituciones o workshops: <strong>dany.el.trainer@gmail.com</strong></p>
-      <p style="margin-top: 8px;">📲 Respuesta rápida por WhatsApp <strong>+569 3554 1341</strong></p>
-    </div>
-  </div>
-
-  <!-- FOOTER -->
-  <footer class="footer">
+  <!-- PLANES Y PRECIOS -->
+  <div id="planes" class="section">
     <div class="container">
-      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px;">
-        <div>
-          <h4 style="color: white; margin-bottom: 12px;">Daniel Henriquez</h4>
-          <p>Técnico Superior en Preparación Física<br>Entrenador especializado en rendimiento, acrobacia, breakdance y firestaff</p>
-          <div class="social-links" style="margin-top: 20px;">
-            <a href="https://instagram.com/dany.el.trainer" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://youtube.com/@danieltrainer6130" target="_blank"><i class="fab fa-youtube"></i></a>
-            <a href="https://github.com/danyeltrainer" target="_blank"><i class="fab fa-github"></i></a>
+      <div class="text-center"><h2>Planes de Entrenamiento Personalizados</h2></div>
+      
+      <div id="datos-contacto-box" style="background: #1a1e2c; border: 1px solid #00f0ff; padding: 24px; border-radius: 20px; max-width: 700px; margin: 0 auto 30px; text-align: left; box-shadow: 0 0 15px rgba(0,240,255,0.1);">
+        <h3 style="margin-bottom: 12px; color: #00f0ff;"><i class="fas fa-rocket"></i> Paso 1: Ingresa tus datos</h3>
+        <p style="font-size: 0.9rem; color: #9ca3af; margin-bottom: 16px;">Escribe tu nombre y comuna para agilizar el proceso y calcular distancias. Luego, elige tu plan abajo.</p>
+        <div style="display:flex; gap:16px; flex-wrap: wrap;">
+          <input type="text" id="cliente-nombre" class="form-control" placeholder="Tu nombre" style="flex:1; min-width: 200px;">
+          <input type="text" id="cliente-comuna" class="form-control" placeholder="Tu comuna (Ej: El Bosque)" style="flex:1; min-width: 200px;">
+        </div>
+        <div class="watermark">Experiencia Indómita · @dany.el.trainer</div>
+      </div>
+
+      <div style="background: #0f121c; border: 1px dashed #ff00cc; padding: 12px 20px; border-radius: 40px; display: inline-block; margin: 0 auto 30px; text-align: center; width: 100%;">
+        👥 <strong>¿Entrenas en pareja?</strong> Súmalo por solo un <strong>20% adicional</strong> sobre el valor de cualquier plan.
+      </div>
+
+      <div class="grid-auto">
+        <div class="service-card">
+          <h3>💻 Online Asincrónico</h3>
+          <div class="price">$45.000 <small>/ mes</small></div>
+          <ul class="feature-list"><li><i class="fas fa-check"></i> Hasta 4 rutinas semanales</li><li><i class="fas fa-check"></i> Revisión técnica por video</li><li><i class="fas fa-check"></i> Disciplina específica: +$5.000</li></ul>
+          <button onclick="enviarPlanWhatsApp('Online Asincrónico')" class="btn btn-whatsapp btn-block" style="margin-top: auto;"><i class="fab fa-whatsapp"></i> Lo quiero</button>
+          <div class="watermark">Experiencia Indómita · @dany.el.trainer</div>
+        </div>
+        <div class="service-card">
+          <h3>📹 Online Sincrónico (En vivo)</h3>
+          <div class="price">$45.000 <small>/ mes (1v/sem)</small></div>
+          <div class="price" style="font-size: 1.5rem;">$85.000 <small>/ mes (2v/sem)</small></div>
+          <ul class="feature-list"><li><i class="fas fa-check"></i> Sesiones por Meet, corrección real</li><li><i class="fas fa-check"></i> Disciplinas incluidas sin costo extra</li></ul>
+          <button onclick="enviarPlanWhatsApp('Online Sincrónico')" class="btn btn-whatsapp btn-block" style="margin-top: auto;"><i class="fab fa-whatsapp"></i> Lo quiero</button>
+          <div class="watermark">Experiencia Indómita · @dany.el.trainer</div>
+        </div>
+        <div class="service-card">
+          <h3>🏠 Presencial a Domicilio</h3>
+          <div class="price">$55.000 <small>/ mes (1v/sem)</small></div>
+          <div class="price" style="font-size: 1.5rem;">$100.000 <small>/ mes (2v/sem)</small></div>
+          <ul class="feature-list"><li><i class="fas fa-check"></i> Clases 1 a 1 en Santiago</li><li><i class="fas fa-check"></i> Corrección táctil técnica</li></ul>
+          <div style="background: #1a1e2c; padding: 10px; border-radius: 12px; font-size: 0.8rem; color: #9ca3af; margin-bottom: 20px;">
+            🚗 Traslados: El Bosque ($0) / Aledañas (+$2k) / Media dist (+$4k) / Larga dist (+$8k)
           </div>
-        </div>
-        <div>
-          <h4 style="color: white; margin-bottom: 12px;">Enlaces rápidos</h4>
-          <ul style="list-style: none; line-height: 2;">
-            <li><a href="#planes" style="color:#b0b3c0; text-decoration: none;">Planes de entrenamiento</a></li>
-            <li><a href="https://danyeltrainer.github.io/DILO-CON-MOVIMIENTO" style="color:#b0b3c0; text-decoration: none;">DILO CON MOVIMIENTO</a></li>
-            <li><a href="https://wa.me/56935541341?text=Hola%20Daniel,%20quiero%20resolver%20dudas%20sobre%20tus%20servicios" style="color:#b0b3c0; text-decoration: none;">Contacto directo WhatsApp</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 style="color: white; margin-bottom: 12px;">📍 Presencial / Talleres</h4>
-          <p>Clases a domicilio en Santiago · Workshops grupales dentro/fuera de RM<br>Talleres abiertos: El Bosque (Portales 1095) y Lo Espejo (Plaza San Lucas)</p>
-          <p><i class="fas fa-envelope"></i> dany.el.trainer@gmail.com</p>
+          <button onclick="enviarPlanWhatsApp('Presencial a Domicilio')" class="btn btn-whatsapp btn-block" style="margin-top: auto;"><i class="fab fa-whatsapp"></i> Lo quiero</button>
+          <div class="watermark">Experiencia Indómita · @dany.el.trainer</div>
         </div>
       </div>
-      <hr style="margin: 32px 0 20px; border-color: #2a2e3f;">
-      <p style="text-align: center; font-size: 0.8rem;">© 2025 Daniel Henriquez · Entrenamiento personalizado · Movimiento con propósito</p>
+    </div>
+  </div>
+
+  <!-- SECCIÓN DE CLASES Y TALLERES REGULARES -->
+  <div id="clases-regulares" class="section bg-light">
+    <div class="container">
+      <div class="text-center">
+        <h2>🎪 Clases y Talleres Regulares</h2>
+        <p class="section-subhead">Espacios grupales independientes de los planes personalizados</p>
+      </div>
+
+      <div class="grid-auto">
+        <div class="service-card" style="border-color: #00f0ff;">
+          <h3>🌿 Taller de Calistenia</h3>
+          <p style="font-size: 0.85rem; color: #00f0ff; font-weight: 600; margin-top: 4px;">Colaboración Municipal · Gratuito</p>
+          <ul class="feature-list" style="margin-top: 16px;">
+            <li><i class="fas fa-calendar-alt"></i> Lunes y Miércoles 18:00 a 19:30 hrs</li>
+            <li><i class="fas fa-map-marker-alt"></i> Pedro Lira 9915, Lo Espejo</li>
+            <li><i class="fas fa-info-circle"></i> Enfoque en salud, fuerza y acondicionamiento al aire libre.</li>
+          </ul>
+          <button onclick="enviarTallerWhatsApp('Taller de Calistenia (Lo Espejo)')" class="btn btn-whatsapp btn-block" style="margin-top: auto;"><i class="fab fa-whatsapp"></i> Inscribirme al Taller</button>
+          <div class="watermark">Experiencia Indómita · @dany.el.trainer</div>
+        </div>
+
+        <div class="service-card" style="border-color: #ff00cc;">
+          <h3>🎪 Taller de Circo Urbano</h3>
+          <p style="font-size: 0.85rem; color: #ff00cc; font-weight: 600; margin-top: 4px;">Municipal · Gratuito (Infancias y Adolescentes)</p>
+          <ul class="feature-list" style="margin-top: 16px;">
+            <li><i class="fas fa-calendar-alt"></i> Jueves 17:30 a 19:30 hrs</li>
+            <li><i class="fas fa-map-marker-alt"></i> Portales 1095, El Bosque</li>
+            <li><i class="fas fa-info-circle"></i> Expresión, movimiento y desarrollo psicomotor.</li>
+          </ul>
+          <button onclick="enviarTallerWhatsApp('Taller de Circo Urbano (El Bosque)')" class="btn btn-whatsapp btn-block" style="margin-top: auto;"><i class="fab fa-whatsapp"></i> Inscribirme al Taller</button>
+          <div class="watermark">Experiencia Indómita · @dany.el.trainer</div>
+        </div>
+
+        <div class="service-card" style="border-color: #ffaa66;">
+          <h3>⚡ Taller de Breaking</h3>
+          <p style="font-size: 0.85rem; color: #ffaa66; font-weight: 600; margin-top: 4px;">Breakdance & Cultura Urbana</p>
+          <ul class="feature-list" style="margin-top: 16px;">
+            <li><i class="fas fa-calendar-alt"></i> Sábados 11:00 a 14:00 hrs</li>
+            <li><i class="fas fa-map-marker-alt"></i> Portales 1095, El Bosque</li>
+            <li><i class="fas fa-info-circle"></i> Fundamentos, powermoves y expresión corporal escénica.</li>
+          </ul>
+          <button onclick="enviarTallerWhatsApp('Taller de Breaking (El Bosque)')" class="btn btn-whatsapp btn-block" style="margin-top: auto;"><i class="fab fa-whatsapp"></i> Consultar Breaking</button>
+          <div class="watermark">Experiencia Indómita · @dany.el.trainer</div>
+        </div>
+
+        <div class="service-card" style="border-color: #00f0ff;">
+          <h3>🤸 Taller de Acrobacias (Integral)</h3>
+          <p style="font-size: 0.85rem; color: #00f0ff; font-weight: 600; margin-top: 4px;">$5.000 clase suelta / $18.000 mensualidad</p>
+          <ul class="feature-list" style="margin-top: 16px;">
+            <li><i class="fas fa-calendar-alt"></i> Sábados 15:00 a 16:30 hrs</li>
+            <li><i class="fas fa-map-marker-alt"></i> Portales 1095, El Bosque</li>
+            <li><i class="fas fa-info-circle"></i> Preacrobáticos, volteos, handstand y líneas de seguridad.</li>
+          </ul>
+          <button onclick="enviarTallerWhatsApp('Taller de Acrobacias (El Bosque)')" class="btn btn-whatsapp btn-block" style="margin-top: auto;"><i class="fab fa-whatsapp"></i> Reservar Acrobacias</button>
+          <div class="watermark">Experiencia Indómita · @dany.el.trainer</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="quote-divider">
+    "Mejora tu fuerza y capacidades<br>para lograr un <span>cuerpx disponible</span> para el rendimiento."
+  </div>
+
+  <!-- HERRAMIENTAS / CALCULADORAS -->
+  <div id="herramientas" class="section">
+    <div class="container">
+      <div class="text-center"><h2 style="margin-bottom: 40px;">🛠️ Herramientas de Entrenamiento</h2></div>
+
+      <div class="grid-2cols">
+        <div class="calc-card">
+          <h3>Calculadora de 1RM</h3>
+          <p style="font-size: 0.85rem; color: #9ca3af; margin-bottom: 12px;">Basada en fórmula Epley. Útil para ajustar tus cargas.</p>
+          <div class="form-group">
+            <label>Ejercicio</label>
+            <select id="rm-ejercicio" class="form-control" onchange="toggleBodyweightField()">
+              <option value="standard">Básicos (Sentadilla, Press, Remo, Curl...)</option>
+              <option value="wl">Halterofilia (Clean, Snatch, Jerk)</option>
+              <option value="bw">Dominadas / Dips / Pistol (Requiere peso corporal)</option>
+            </select>
+          </div>
+          <div class="form-group" id="group-bw" style="display: none;">
+            <label>Tu Peso Corporal (kg) <span style="color:#ff00cc; font-size:0.8rem;">*Requerido para este ejercicio</span></label>
+            <input type="number" id="rm-bw" class="form-control" placeholder="Ej: 75">
+          </div>
+          <div style="display:flex; gap:10px;">
+            <div class="form-group" style="flex:1;"><label>Peso externo (kg)</label><input type="number" id="rm-peso" class="form-control" placeholder="Ej: 80"></div>
+            <div class="form-group" style="flex:1;"><label>Reps (Al fallo)</label><input type="number" id="rm-reps" class="form-control" placeholder="Ej: 5"></div>
+          </div>
+          <button onclick="calcularRM()" class="btn btn-primary btn-block">Calcular 1RM</button>
+          <div id="rm-resultado" class="calc-result" style="display:none;"></div>
+          <div class="watermark">Experiencia Indómita · @dany.el.trainer</div>
+        </div>
+
+        <div class="calc-card">
+          <h3>Calculadora de Macros y Calorías</h3>
+          <p style="font-size: 0.85rem; color: #9ca3af; margin-bottom: 20px;">Estima tu Gasto Energético y distribución.</p>
+          <div style="display:flex; gap:10px;">
+            <div class="form-group" style="flex:1;"><label>Peso (kg)</label><input type="number" id="mac-peso" class="form-control"></div>
+            <div class="form-group" style="flex:1;"><label>Altura (cm)</label><input type="number" id="mac-altura" class="form-control"></div>
+            <div class="form-group" style="flex:1;"><label>Edad</label><input type="number" id="mac-edad" class="form-control"></div>
+          </div>
+          <div class="form-group">
+            <label>Nivel de Actividad</label>
+            <select id="mac-actividad" class="form-control">
+              <option value="1.2">Sedentario</option>
+              <option value="1.375">Ligero (1-3 días/sem)</option>
+              <option value="1.55">Moderado (3-5 días/sem)</option>
+              <option value="1.725">Fuerte (6-7 días/sem)</option>
+            </select>
+          </div>
+          <button onclick="calcularMacros()" class="btn btn-outline btn-block">Calcular Mis Macros</button>
+          <div id="mac-resultado" class="calc-result" style="display:none; font-size: 0.9rem; text-align: left;"></div>
+          <div class="watermark">Experiencia Indómita · @dany.el.trainer</div>
+        </div>
+      </div>
+
+      <!-- Hidratación -->
+      <div class="calc-card" style="margin-top: 32px; border-color: #00f0ff;">
+        <h3>💧 Calculadora de Hidratación Aproximada</h3>
+        <p style="font-size: 0.85rem; color: #9ca3af; margin-bottom: 20px;">El requerimiento de agua varía según actividad, clima y temperatura. Estima tus necesidades diarias.</p>
+        <div class="grid-2cols">
+          <div>
+            <div class="form-group"><label>Tu Peso (kg)</label><input type="number" id="hid-peso" class="form-control" placeholder="Ej: 75"></div>
+            <div class="form-group"><label>Horas de Actividad Física Hoy</label><input type="number" step="0.5" id="hid-horas" class="form-control" placeholder="Ej: 1.5"></div>
+          </div>
+          <div>
+            <div class="form-group">
+              <label>Temperatura / Época</label>
+              <select id="hid-temp" class="form-control">
+                <option value="1">Frío / Invierno (Menos de 15°C)</option>
+                <option value="1.1">Templado (15°C - 25°C)</option>
+                <option value="1.2">Calor / Verano (Más de 25°C)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Entorno / Clima</label>
+              <select id="hid-clima" class="form-control">
+                <option value="0">Ciudad / Bosque (Humedad normal)</option>
+                <option value="300">Desierto / Altura (Cerro) / Muy seco (+300ml)</option>
+                <option value="500">Playa / Extrema humedad y calor (+500ml)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <button onclick="calcularHidratacion()" class="btn btn-primary btn-block" style="margin-top: 10px;">Calcular Agua Diaria</button>
+        <div id="hid-resultado" class="calc-result" style="display:none;"></div>
+        
+        <div id="hid-factores" style="display:none; margin-top: 16px; background: #00f0ff11; padding: 16px; border-radius: 12px; font-size: 0.85rem; text-align: left; border-left: 4px solid #00f0ff;">
+          <strong style="color: #00f0ff;">⚠️ Importante: Esto es solo un aproximado. Tu hidratación real varía muchísimo si:</strong>
+          <ul style="margin-top: 8px; margin-left: 20px; color: #9ca3af;">
+            <li><strong>Digestión y Comidas:</strong> Has comido hace poco o estás digiriendo alimentos pesados (la digestión requiere agua).</li>
+            <li><strong>Alcohol, Drogas o Chatarra:</strong> Consumiste sustancias, comida ultraprocesada o mucho sodio en las últimas horas (exigen más agua para procesarse).</li>
+            <li><strong>Descanso:</strong> Si has dormido mal, tu cuerpo regula peor los líquidos.</li>
+            <li><strong>Frutas y Verduras:</strong> Si comes mucha fruta, ya estás aportando agua a tu organismo.</li>
+          </ul>
+        </div>
+        <div class="watermark">Experiencia Indómita · @dany.el.trainer</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SECCIÓN DESPLEGABLE: HÁBITOS, CIENCIA Y MOVIMIENTO -->
+  <div id="habitos-section" class="section bg-light">
+    <div class="container text-center">
+      
+      <button onclick="toggleSection('habitos-content')" class="btn btn-primary" style="font-size: 1.2rem; padding: 18px 36px; background: linear-gradient(135deg, #00f0ff, #ff00cc); color: #0a0c12; border: none; box-shadow: 0 0 20px rgba(0,240,255,0.4);">
+        🌱 <span id="habitos-btn-text">Hábitos, Ciencia y Movimiento (Haz clic para explorar)</span> 🔬
+      </button>
+
+      <div id="habitos-content" class="toggle-content">
+        
+        <!-- GRAFICO DE GASTO ENERGÉTICO -->
+        <div class="energy-chart-wrapper" style="text-align: left;">
+          <h3 style="margin-bottom: 10px;">El mito de "quemar calorías" entrenando</h3>
+          <p style="font-size: 0.95rem; color: #9ca3af; margin-bottom: 20px;">Mucha gente cree que el entrenamiento es lo que más energía gasta. La realidad es que el total de tus hábitos diarios tiene un impacto estructural mucho mayor. Mira el desglose de tu Gasto Energético Total Diario:</p>
+          
+          <div class="energy-bar-container">
+            <div class="energy-segment" style="width: 65%; background: #2a2e3f;" title="Metabolismo Basal (BMR)"><span>BMR (~65%)</span></div>
+            <div class="energy-segment" style="width: 15%; background: #ffaa66;" title="Actividad Diaria (NEAT)"><span>NEAT (~15%)</span></div>
+            <div class="energy-segment" style="width: 10%; background: #ff00cc;" title="Termogénesis de los Alimentos (TEF)"><span>TEF (~10%)</span></div>
+            <div class="energy-segment" style="width: 10%; background: #00f0ff;" title="Ejercicio (EAT)"><span>EAT (~10%)</span></div>
+          </div>
+          
+          <div class="energy-legend">
+            <div class="legend-item"><div class="legend-color" style="background: #2a2e3f;"></div> BMR (Sobrevivir, respirar, órganos)</div>
+            <div class="legend-item"><div class="legend-color" style="background: #ffaa66;"></div> NEAT (Ocupaciones diarias, moverse, caminar)</div>
+            <div class="legend-item"><div class="legend-color" style="background: #ff00cc;"></div> TEF (Gasto por digerir comida)</div>
+            <div class="legend-item"><div class="legend-color" style="background: #00f0ff;"></div> EAT (El Entrenamiento Planificado)</div>
+          </div>
+
+          <div style="margin-top: 20px; background: #0a0c12; padding: 16px; border-radius: 12px; border-left: 4px solid #00f0ff; font-size: 0.9rem; color: #cbd5e1;">
+            💡 <strong>Análisis clave:</strong> El ejercicio estructurado es una parte muy pequeña de todo este gasto energético diario. Lo demás se lo llevan la supervivencia de tus órganos y tus movimientos cotidianos. El entrenamiento es un estímulo clave, pero el balance y la salud estructural dependen del total de tus hábitos.
+          </div>
+          <div class="watermark">Experiencia Indómita · @dany.el.trainer</div>
+        </div>
+
+        <!-- ALTA INTENSIDAD -->
+        <div class="service-card" style="border-color: #00f0ff; margin-top: 30px; text-align: left;">
+          <h3 style="color: #00f0ff;"><i class="fas fa-bolt"></i> El Poder Incalculable de la Alta Intensidad</h3>
+          <p style="font-size: 0.95rem; margin-top: 10px; color: #cbd5e1;">El entrenamiento de alta intensidad (que <strong>no es lo mismo</strong> que hacer 2 horas de baile entretenido o circuitos suaves) constituye el factor protector más relevante para la salud metabólica y cardiovascular.</p>
+          <p style="font-size: 0.9rem; color: #9ca3af; margin-top: 10px;">Aquí hablamos de <em>sprints, sentadillas máximas, dominadas lastradas, pesos muertos, hip thrusts con cargas maximales, saltos pliométricos intensivos y extensivos, o HIIT reales</em>.</p>
+          
+          <div style="background: #1a1e2c; padding: 14px; border-radius: 12px; margin: 15px 0; font-size: 0.85rem; border-left: 3px solid #ff00cc;">
+            ⚡ <strong>Equivalencia de impacto:</strong> Se calcula que <strong>1 minuto de alta intensidad</strong> aporta adaptaciones metabólicas comparables a unos <strong>8 minutos de intensidad moderada</strong> (como trote o bicicleta suave) y a unos <strong>72 minutos de baja intensidad</strong> (como caminatas o actividades diarias). ¡Los beneficios protectores son incalculables frente a entrenamientos convencionales de baja/moderada exigencia!
+          </div>
+          <p style="font-size: 0.9rem; color: #cbd5e1;">No todas las personas cuentan con esta información ni están listas para arrancar directamente con alta intensidad. Por eso, <em>todo movimiento es bueno para empezar</em>, pero si tu objetivo es escalar hacia la alta intensidad de forma segura y estructurada, háblame y lo gestionamos.</p>
+          <div class="watermark">Experiencia Indómita · @dany.el.trainer</div>
+        </div>
+
+        <!-- NUTRIENTES, FUENTES Y FUNCIONES -->
+        <div class="service-card" style="border-color: #ffaa66; margin-top: 30px; text-align: left;">
+          <h3 style="color: #ffaa66;"><i class="fas fa-utensils"></i> Guía Esencial de Nutrientes, Fuentes y Funciones</h3>
+          <p style="font-size: 0.95rem; margin-top: 10px; color: #cbd5e1;">Para que optimices tu rendimiento y salud, comprende qué consumes y para qué sirve cada nutriente (valores estimados por cada 100g de alimento):</p>
+          
+          <div style="margin-top: 15px; display: flex; flex-direction: column; gap: 16px; font-size: 0.9rem;">
+            <div style="background: #1a1e2c; padding: 12px; border-radius: 12px;">
+              <strong style="color: #00f0ff;">🍗 Proteínas:</strong> Fuentes: Carne de soja texturizada (~50g), pechuga de pollo (~30g), cerdo (~25g), pescado (~20g), garbanzos cocidos (~19g), porotos (~21g), tofu (~8-10g). <br><em>Función:</em> Construcción, reparación y mantenimiento de tejidos (músculos, órganos), síntesis de enzimas y soporte estructural del sistema inmune.
+            </div>
+            <div style="background: #1a1e2c; padding: 12px; border-radius: 12px;">
+              <strong style="color: #00f0ff;">🥑 Grasas (Lípidos):</strong> Fuentes: Aceite de oliva, frutos secos (nueces, almendras ~50-60g de grasa), semillas de chía/lino, palta. <br><em>Función:</em> Regulación hormonal (testosterona, estrógenos), absorción de vitaminas liposolubles (A, D, E, K), protección orgánica y salud cerebral.
+            </div>
+            <div style="background: #1a1e2c; padding: 12px; border-radius: 12px;">
+              <strong style="color: #00f0ff;">🌾 Carbohidratos y Fibra:</strong> 
+              <br>• <em>Fuentes de Carbohidratos:</em> Avena, arroz integral, legumbres, verduras de hoja, frutas.
+              <br>• <em>Fuentes de Fibra:</em> Legumbres (lentejas, porotos), avena, frutos secos, semillas (chía/lino) y verduras crudas o cocidas.
+              <br><em>Función:</em> Los carbohidratos entregan energía al sistema nervioso y muscular; la fibra regula la microbiota intestinal, mejora la saciedad y protege la salud metabólica de manera clave.
+            </div>
+            <div style="background: #1a1e2c; padding: 12px; border-radius: 12px;">
+              <strong style="color: #ff00cc;">⚡ Complejo B y Vitamina B12:</strong> 
+              <br>• <em>Fuentes del Complejo B:</em> Legumbres, cereales integrales, frutos secos, carne, huevos, levadura nutricional.
+              <br>• <em>Vitamina B12:</em> Está presente de forma natural en bacterias de la tierra. Los animales herbívoros la consumen al pastar (y frecuentemente se les suplementa hoy en día al no salir a pastar). También está presente en alimentos cárnicos. 
+              <br>• <em>Importancia en Plant-Based:</em> En personas con alimentación plant-based es indispensable su suplementación (debe ser cuantificada a partir de exámenes). 
+              <br>• <em>Recomendación de consumo:</em> Se recomienda no consumirla cercana a alimentos cítricos. Existen diferentes formatos (diarios, semanales, mensuales) para ver cuál te acomoda más. <strong>Por ningún motivo uses multivitamínicos</strong>, pues prometen mucho, no alcanzan la calidad que dicen y son más caros (lo mismo aplica para cualquier otra vitamina o nutriente).
+              <br>• <em>Efectos de su déficit:</em> Provoca anemia megaloblástica, fatiga extrema, debilidad muscular y daños neurológicos severos si no se atiende.
+              <br><em>Función:</em> Obtención de energía, metabolismo celular y funcionamiento óptimo del sistema nervioso.
+            </div>
+            <div style="background: #1a1e2c; padding: 12px; border-radius: 12px;">
+              <strong style="color: #00f0ff;">⚙️ Minerales (Hierro, Calcio, Zinc):</strong> 
+              <br>• <em>Hierro:</em> Fuentes: Lentejas, espinaca, acelga, carnes rojas, vísceras. (El hierro vegetal mejora su absorción si se combina con vitamina C).
+              <br>• <em>Déficit de Hierro:</em> Provoca anemia ferropénica, cansancio crónico, palidez y caída de rendimiento físico/cognitivo.
+              <br><em>Función:</em> El hierro transporta oxígeno en la sangre a través de la hemoglobina; el calcio da soporte óseo y contracción muscular; el zinc fortalece la inmunidad.
+            </div>
+            <div style="background: #1a1e2c; padding: 12px; border-radius: 12px;">
+              <strong style="color: #00f0ff;">🍊 Vitaminas Adicionales (A, C, D):</strong> Fuentes: Zanahoria/camote (Vit. A), cítricos (Vit. C), exposición solar y hongos (Vit. D). <br><em>Función:</em> Salud visual, protección antioxidante, síntesis de colágeno y modulación del sistema inmune y óseo.
+            </div>
+          </div>
+
+          <div style="margin-top: 20px; background: #0a0c12; padding: 14px; border-radius: 12px; border-left: 4px solid #ff00cc; font-size: 0.9rem; color: #eef2ff;">
+            🌱 <strong>Nota vital:</strong> Te puedes alimentar muy bien, pero sin movimiento no aplicas tus capacidades y estas se van perdiendo. La nutrición es sumamente necesaria, pero el movimiento es <em>indispensable</em>; por eso, ningún alimento puede reemplazar al ejercicio. ¿Quieres mejorar tus hábitos? ¡Háblame!
+          </div>
+          <div class="watermark">Experiencia Indómita · @dany.el.trainer</div>
+        </div>
+
+        <!-- TARJETAS EDUCATIVAS: PILARES DE LA FUERZA Y EL PESO -->
+        <div class="grid-auto" style="margin-top: 30px; text-align: left;">
+          
+          <div class="service-card" style="border-color: #00f0ff;">
+            <h3 style="color: #00f0ff;"><i class="fas fa-dumbbell"></i> El Pilar Real: Tensión Mecánica</h3>
+            <p style="font-size: 0.95rem; margin-top: 10px; color: #cbd5e1;">Durante mucho tiempo se habló de tres pilares (estrés metabólico, daño muscular y tensión mecánica). Sin embargo, la evidencia ha demostrado que <strong>es solo la tensión mecánica</strong> el verdadero motor, la cual se alcanza con intensidades y esfuerzos elevados.</p>
+            <p style="font-size: 0.9rem; color: #9ca3af; margin-top: 10px;">Aquí se activan factores neuromotores de manera refleja ante cargas elevadas (y carga no es solo peso externo). Esto provoca un reclutamiento inmediato de fibras (especialmente con 1RM o cargas cercanas). Si bien acercarse al fallo es común para la hipertrofia, no todo el mundo necesita un volumen masivo de músculo: la fuerza máxima, velocidad, resistencia, acrobacias y danza requieren equilibrar la funcionalidad de las fibras para obtener un cuerpo resiliente, disponible y con estructura.</p>
+            <div class="watermark">Experiencia Indómita · @dany.el.trainer</div>
+          </div>
+
+          <div class="service-card" style="border-color: #ffaa66;">
+            <h3 style="color: #ffaa66;"><i class="fas fa-bolt"></i> El Fallo Muscular y su Mecánica</h3>
+            <p style="font-size: 0.95rem; margin-top: 10px; color: #cbd5e1;">El fallo no es solo no poder realizar ninguna repetición más con buena técnica: <strong>es la imposibilidad real de realizar más repeticiones</strong>.</p>
+            <p style="font-size: 0.9rem; color: #9ca3af; margin-top: 10px;">Esto no ocurre directamente por factores nerviosos aislados, sino principalmente por la <strong>percepción del esfuerzo</strong>, la cual desencadena mecanismos neuronales protectores que te impiden continuar con la tarea. <em>El fallo técnico ocurre siempre primero que el fallo muscular.</em> Aproximarse a este conlleva una gran demanda y reclutamiento de fibras musculares, además de la fatiga progresiva de otras fibras que exigen apoyo o la consecuente remodelación adaptativa para resolver mejor la tarea en el tiempo. Generalmente, este concepto es utilizado como referencia en trabajos de hipertrofia, musculación o entrenamientos basados en evidencias del culturismo.</p>
+            <div class="watermark">Experiencia Indómita · @dany.el.trainer</div>
+          </div>
+
+          <div class="service-card" style="border-color: #ff00cc;">
+            <h3 style="color: #ff00cc;"><i class="fas fa-balance-scale"></i> El Mito del Peso y el IMC</h3>
+            <p style="font-size: 0.95rem; margin-top: 10px; color: #cbd5e1;">El "peso ideal" no existe: es una métrica lejana a la vivencia real que busca estandarizar formas corporales. El **IMC** es un índice que intenta cuadrar lo incuadrable, fallando por completo al ignorar la forma física, el músculo, la grasa o la hidratación, basándose solo en peso y estatura para etiquetar personas.</p>
+            <p style="font-size: 0.9rem; color: #9ca3af; margin-top: 10px;">¿Te has topado con estas mediciones vacías o has sufrido problemas de autoimagen? El peso es solo un número más que debemos comprender. Somos seres con masa que interactúan en el mundo. Conocerlo sirve para medir potencia o vigilar cambios drásticos (que no siempre son grasa, ¡saludos a los satanistas de la grasa y algunos matasanos, bromita, hay médicos excelentes!). Lo importante es cómo interactúas con tu peso y si este cambia por hábitos perjudiciales (atracones, estrés, mal dormir).</p>
+            <div class="watermark">Experiencia Indómita · @dany.el.trainer</div>
+          </div>
+
+        </div>
+
+        <!-- OTRAS TARJETAS: IMPACTO, MENTALIDAD Y SUEÑO -->
+        <div class="grid-auto" style="margin-top: 30px; text-align: left;">
+          
+          <div class="service-card" style="border-color: #00f0ff;">
+            <h3 style="color: #00f0ff;"><i class="fas fa-shield-alt"></i> Impacto, Fuerza y Supervivencia</h3>
+            <p style="font-size: 0.95rem; margin-top: 10px; color: #cbd5e1;">Cargar pesado o someter al cuerpo a impactos controlados le indican directamente a tu organismo que necesita adaptarse por pura supervivencia. No siempre se trata de un impacto literal: frenar, acelerar, desacelerar y cambiar de dirección impactan nuestros sistemas de forma irremplazable.</p>
+            <div style="margin-top: 12px; font-size: 0.85rem; color: #ffaa66;">⚠️ Estas cargas deben ser administradas por profesionales capacitados (¡contacta conmigo!).</div>
+            <div class="watermark">Experiencia Indómita · @dany.el.trainer</div>
+          </div>
+
+          <div class="service-card" style="border-color: #ffaa66;">
+            <h3 style="color: #ffaa66;"><i class="fas fa-fire"></i> Experiencia Motriz Ampliada</h3>
+            <p style="font-size: 0.95rem; margin-top: 10px; color: #cbd5e1;">Aporta beneficios maravillosos para la vida, pero <strong>no reemplaza</strong> al impacto, la fuerza, la resistencia o la movilidad por sí misma. Es el puente que los integra con sentido; sin los engranajes de estos pilares, carece de la potencia para mantener cuerp@s disponibles.</p>
+            <div class="watermark">Experiencia Indómita · @dany.el.trainer</div>
+          </div>
+
+          <div class="service-card" style="border-color: #ff00cc;">
+            <h3 style="color: #ff00cc;"><i class="fas fa-brain"></i> Salud Mental & Vínculos</h3>
+            <p style="font-size: 0.95rem; margin-top: 10px; color: #cbd5e1;">Realizar múltiples tareas, aprendizajes complejos y relacionarse en <strong>espacios sociales comunitarios</strong> estimula la neuroplasticidad profundamente, previniendo demencias (leer de forma pasiva no tiene el mismo respaldo para el cuidado cerebral).</p>
+            <div class="watermark">Experiencia Indómita · @dany.el.trainer</div>
+          </div>
+
+        </div>
+
+        <!-- SUEÑO Y PARADOJA OCUPACIONAL -->
+        <div class="grid-2cols" style="align-items: stretch; margin-top: 30px; text-align: left;">
+          
+          <div class="service-card" style="border-color: #00f0ff;">
+            <h3 style="color: #00f0ff;"><i class="fas fa-moon"></i> Sueño, Descanso y Estructura</h3>
+            <p style="font-size: 0.95rem; margin-top: 10px; color: #cbd5e1;">El rango óptimo para adultos se sitúa entre <strong>7-9 horas efectivas</strong>. Dormir mal o en exceso (como dormir constantemente 10 horas) genera estados pro-inflamatorios que desestabilizan la salud (grasa, pérdida muscular, irritabilidad). Las siestas diurnas deben acotarse a <strong>20-30 minutos</strong>, y ver pantallas hasta tarde sin rutina afecta el bienestar cerebral.</p>
+            <div class="watermark">Experiencia Indómita · @dany.el.trainer</div>
+          </div>
+
+          <div class="service-card" style="border-color: #ffaa66;">
+            <h3 style="color: #ffaa66;"><i class="fas fa-briefcase"></i> La Paradoja de la Actividad Física</h3>
+            <p style="font-size: 0.95rem; margin-top: 10px; color: #cbd5e1;">El estilo de vida moderno nos empuja a una injusticia ocupacional: sedentarismo absoluto o trabajos físicos extenuantes. Quienes tienen trabajos sedentarios pero entrenan fuerza 2-3 veces por semana mejoran drásticamente su salud frente a quienes realizan labores desgastantes pero sin el estímulo protector del entrenamiento de fuerza programado.</p>
+            <div class="watermark">Experiencia Indómita · @dany.el.trainer</div>
+          </div>
+
+        </div>
+
+        <!-- RECOMENDACIONES DIRECTAS Y TABLA RER/EPSE -->
+        <div style="background: #11141f; padding: 32px; border-radius: 24px; border: 1px dashed #2a2e3f; margin-top: 30px; text-align: left;">
+          <h3 style="margin-bottom: 20px;"><i class="fas fa-tasks" style="color: #00f0ff;"></i> Recomendaciones Indómitas para empezar</h3>
+          <ul style="font-size: 0.95rem; color: #cbd5e1; margin-left: 20px; line-height: 1.8; display: flex; flex-direction: column; gap: 12px;">
+            <li><strong>VILPA (Actividad Física Intermitente de Estilo de Vida Vigoroso):</strong> No se trata de romantizar el no tener tiempo, pero si la vida te acorrala y no te queda de otra, aprovecha los quehaceres y ocupaciones diarias. Imprímeles más velocidad, potencia e intención de movimiento para que cuenten como estímulo físico real.</li>
+            <li><strong>Pausas activas conscientes:</strong> Movimiento cada 20 minutos de inactividad (estiramientos, toprock, push ups, sentadillas).</li>
+            <li><strong>Lo Básico:</strong> 1-3 series semanales de Sentadillas, Push ups, Dips, Remos o dominadas, Extensiones de columna y Abdominales.</li>
+            <li><strong>Esfuerzo real:</strong> Entrena acercándote a un EPSE (Escala de Percepción Subjetiva del Esfuerzo) de 7-9 o un RER (Repeticiones en Reserva) de 2-3. Descansa 2-3 min entre series pesadas.</li>
+            <li><strong>¿Poco tiempo? ¡Haz lo que puedas, peor es nada!:</strong> Si no dispones de mucho tiempo, te dejo rutinas simples en mis canales para arrancar. ⚠️ <em>Consejo de seguridad:</em> si te fatigas, no te sientes ni te detengas abruptamente para evitar variaciones violentas en tu presión arterial; detente, respira y regula tu respiración de forma progresiva. ¡Comenta en los videos para que subamos más contenido!</li>
+          </ul>
+
+          <button onclick="toggleSection('tabla-rir')" class="btn btn-outline" style="margin-top: 20px; font-size: 0.85rem;">
+            <i class="fas fa-eye"></i> Ver tabla de Esfuerzo (EPSE / RER)
+          </button>
+
+          <div id="tabla-rir" class="toggle-content">
+            <p style="font-size: 0.85rem; color: #9ca3af; margin-bottom: 10px;"><strong>EPSE</strong> (Esfuerzo del 1 al 10) y <strong>RER</strong> (Repeticiones en Reserva).</p>
+            <div style="overflow-x: auto;">
+              <table class="rpe-table">
+                <thead><tr><th>Esfuerzo (EPSE)</th><th>Reps en Reserva (RER)</th><th>Sensación en la serie</th></tr></thead>
+                <tbody>
+                  <tr><td>10</td><td>0</td><td>Fallo muscular real (imposibilidad de hacer más repeticiones).</td></tr>
+                  <tr><td>9</td><td>1</td><td>Muy pesado. Podías hacer exactamente 1 repetición más.</td></tr>
+                  <tr><td>8</td><td>2</td><td>Pesado. Podías hacer 2 repeticiones más (Ideal para fuerza/hipertrofia).</td></tr>
+                  <tr><td>7</td><td>3</td><td>Moderado. Podías hacer 3 repeticiones más.</td></tr>
+                  <tr><td>5 - 6</td><td>4 a 6</td><td>Calentamiento o trabajo de velocidad.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="watermark">Experiencia Indómita · @dany.el.trainer</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="quote-divider">
+    "La fuerza sin experiencias no es nada, por eso aquí trabajamos basados en experiencias<br>para que <span>no solo seas fuerte sino capaz.</span>"
+  </div>
+
+  <!-- BASES Y CONDICIONES (Al final) -->
+  <div id="bases" class="section">
+    <div class="container text-center">
+      <h2>⚠️ Bases de la "Experiencia Indómita"</h2>
+      <p class="section-subhead">Cuentas claras conservan la motivación y el progreso.</p>
+      <button onclick="toggleSection('bases-grid')" class="btn btn-primary" style="background: #ff00cc; color: white; border: none;">
+        <i class="fas fa-file-contract"></i> Leer Reglas del Servicio
+      </button>
+      <div id="bases-grid" class="toggle-content">
+        <div class="grid-auto text-left">
+          <div class="service-card">
+            <h3>🗓️ Mensualidad y Caducidad</h3>
+            <p style="font-size: 0.9rem; color: #9ca3af; margin-top: 10px;">El plan mensual cubre 30 días exactos. <strong>Al finalizar el mes, el plan caduca.</strong> Los programas avanzan solo si los ejecutas.</p>
+            <div class="watermark">Experiencia Indómita · @dany.el.trainer</div>
+          </div>
+          <div class="service-card">
+            <h3>⏳ Avisos y Planificación</h3>
+            <p style="font-size: 0.9rem; color: #9ca3af; margin-top: 10px;">Debes avisar <strong>con al menos 1 semana de anticipación</strong> si no renovarás. Si no avisas, se cancela un porcentaje por el trabajo de planificación realizado.</p>
+            <div class="watermark">Experiencia Indómita · @dany.el.trainer</div>
+          </div>
+          <div class="service-card">
+            <h3>🌴 Feriados y Descanso</h3>
+            <p style="font-size: 0.9rem; color: #9ca3af; margin-top: 10px;">Los días feriados son para desconectar. <strong>No respondo mensajes en días festivos</strong> (salvo eventualidades).</p>
+            <div class="watermark">Experiencia Indómita · @dany.el.trainer</div>
+          </div>
+          <div class="service-card">
+            <h3>💳 Pagos e Inicio</h3>
+            <p style="font-size: 0.9rem; color: #9ca3af; margin-top: 10px;">Todo servicio es prepago. Las renovaciones se realizan en la misma fecha de inicio.</p>
+            <div class="watermark">Experiencia Indómita · @dany.el.trainer</div>
+          </div>
+          <div class="service-card">
+            <h3>📹 Responsabilidad Personal</h3>
+            <p style="font-size: 0.9rem; color: #9ca3af; margin-top: 10px;">Es tu responsabilidad grabarte para revisión técnica. Sin videos, no puedo corregirte.</p>
+            <div class="watermark">Experiencia Indómita · @dany.el.trainer</div>
+          </div>
+          <div class="service-card">
+            <h3>⚙️ Ejecución Correcta</h3>
+            <p style="font-size: 0.9rem; color: #9ca3af; margin-top: 10px;">Respeta los tiempos de descanso, intensidad y videos. Deja tus comentarios al finalizar cada sesión.</p>
+            <div class="watermark">Experiencia Indómita · @dany.el.trainer</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DILO CON MOVIMIENTO -->
+  <div id="escuela" class="section bg-light">
+    <div class="container">
+      <div style="background: linear-gradient(135deg, #0a0c12, #11141f); border: 2px solid #ff00cc; border-radius: 32px; padding: 40px 24px; text-align: center; box-shadow: 0 0 20px rgba(255,0,204,0.2);">
+        <h2 style="color: #ff00cc; margin-bottom: 10px;">🎪 Escuela Dilo Con Movimiento</h2>
+        <p style="font-size: 1.1rem; max-width: 800px; margin: 0 auto 30px;">Conoce nuestra escuela comunitaria de desarrollo personal mediante el arte y el movimiento. Circo Urbano, Breaking, Acrobacia y comunidad.</p>
+        <a href="https://danyeltrainer.github.io/DILO-CON-MOVIMIENTO/" target="_blank" class="btn btn-primary" style="background: #ff00cc; color: white;">
+          <i class="fas fa-external-link-alt"></i> Visitar la web de la Escuela
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER CON CANAL 1 Y CANAL 2 -->
+  <footer class="bg-dark-soft" style="padding: 40px 0; border-top: 1px solid #1a1e2c; text-align: center;">
+    <div class="container">
+      <p style="color: #cbd5e1; max-width: 700px; margin: 0 auto 20px; font-size: 0.95rem;">
+        Estas recomendaciones son básicas, pero en mis canales o en el canal de WhatsApp podrás encontrar más recursos si por ahora no cuentas con los medios para contratar mis servicios. ¡Te agradezco infinitamente el compartir para difundir este conocimiento!
+      </p>
+      <p style="color: #9ca3af; font-size: 0.85rem;">© 2026 Daniel Henriquez · Experiencia Indómita · Movimiento con propósito</p>
+      <div style="margin-top: 20px; font-size: 1.5rem; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+        <a href="https://instagram.com/dany.el.trainer" target="_blank" style="color: #9ca3af;"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.youtube.com/@danieltrainer6130" target="_blank" style="color: #9ca3af;"><i class="fab fa-youtube"></i> Canal 1</a>
+        <a href="https://www.youtube.com/@daniijacky" target="_blank" style="color: #9ca3af;"><i class="fab fa-youtube"></i> Canal 2</a>
+      </div>
     </div>
   </footer>
 </main>
+
+<script>
+  function toggleSection(id) {
+    const el = document.getElementById(id);
+    if (el.style.display === "none" || el.style.display === "") {
+      el.style.display = "block";
+    } else {
+      el.style.display = "none";
+    }
+  }
+
+  function enviarPlanWhatsApp(plan) {
+    let nombre = document.getElementById('cliente-nombre').value.trim();
+    let comuna = document.getElementById('cliente-comuna').value.trim();
+    
+    if (nombre === "" || comuna === "") {
+      alert("Por favor, ingresa tu Nombre y Comuna en el 'Paso 1' antes de elegir un plan.");
+      document.getElementById('datos-contacto-box').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    let mensaje = `Hola Daniel! Me interesa el plan ${plan}. Mi nombre es ${nombre} y soy de la comuna ${comuna}.`;
+    window.open(`https://wa.me/56935541341?text=${encodeURIComponent(mensaje)}`, '_blank');
+  }
+
+  function enviarTallerWhatsApp(taller) {
+    let nombre = document.getElementById('cliente-nombre').value.trim();
+    let comuna = document.getElementById('cliente-comuna').value.trim();
+    if (nombre === "") nombre = "[Tu Nombre]";
+    if (comuna === "") comuna = "[Tu Comuna]";
+
+    let mensaje = `Hola Daniel! Quiero consultar/inscribirme en el ${taller}. Mi nombre es ${nombre} y soy de la comuna ${comuna}.`;
+    window.open(`https://wa.me/56935541341?text=${encodeURIComponent(mensaje)}`, '_blank');
+  }
+
+  function toggleBodyweightField() {
+    const tipo = document.getElementById('rm-ejercicio').value;
+    document.getElementById('group-bw').style.display = tipo === 'bw' ? 'block' : 'none';
+  }
+
+  function calcularRM() {
+    const tipo = document.getElementById('rm-ejercicio').value;
+    const pesoExterno = parseFloat(document.getElementById('rm-peso').value) || 0;
+    const reps = parseInt(document.getElementById('rm-reps').value);
+    const bw = parseFloat(document.getElementById('rm-bw').value) || 0;
+    const resDiv = document.getElementById('rm-resultado');
+
+    if (reps <= 0 || (pesoExterno === 0 && tipo !== 'bw')) { alert("Ingresa datos válidos."); return; }
+    let pesoTotal = tipo === 'bw' ? (pesoExterno + bw) : pesoExterno;
+    if(tipo === 'bw' && bw <= 0) { alert("Ingresa tu peso corporal para dominadas/dips."); return; }
+
+    let rmEpley = pesoTotal * (1 + 0.0333 * reps);
+    let rmMostrar = tipo === 'bw' ? (rmEpley - bw) : rmEpley;
+
+    resDiv.style.display = 'block';
+    let advertencia = reps > 10 ? '<br><span style="color:#ffaa66; font-size:0.8rem;">⚠️ >10 reps: Cálculo menos preciso.</span>' : '';
+    if(tipo === 'wl') advertencia += '<br><span style="color:#ffaa66; font-size:0.8rem;">⚠️ Halterofilia: RM técnico con margen de error.</span>';
+
+    if (tipo === 'bw') {
+      resDiv.innerHTML = `<span style="font-size:2rem; color:#00f0ff;">+${rmMostrar.toFixed(1)} kg</span><br><span style="font-size:0.9rem; color:#9ca3af;">(Lastre máximo estimado)</span>${advertencia}`;
+    } else {
+      resDiv.innerHTML = `<span style="font-size:2rem; color:#00f0ff;">${rmMostrar.toFixed(1)} kg</span><br><span style="font-size:0.9rem; color:#9ca3af;">Tu 1RM Estimado</span>${advertencia}`;
+    }
+  }
+
+  function calcularMacros() {
+    const peso = parseFloat(document.getElementById('mac-peso').value);
+    const altura = parseFloat(document.getElementById('mac-altura').value);
+    const edad = parseInt(document.getElementById('mac-edad').value);
+    const act = parseFloat(document.getElementById('mac-actividad').value);
+    const resDiv = document.getElementById('mac-resultado');
+
+    if (peso > 0 && altura > 0 && edad > 0) {
+      let bmr = (10 * peso) + (6.25 * altura) - (5 * edad) + 5;
+      const tdee = bmr * act;
+      const calcs = (cals) => ({ c: Math.round(cals), p: Math.round(peso*2), f: Math.round(peso*1), cb: Math.round((cals - (peso*8 + peso*9))/4) });
+      
+      let mant = calcs(tdee), def = calcs(tdee - 400), sur = calcs(tdee + 300);
+      resDiv.style.display = 'block';
+      resDiv.innerHTML = `
+        <div style="margin-bottom: 12px; border-bottom: 1px solid #2a2e3f;">
+          <strong style="color:#00f0ff;">⚖️ Mantenimiento: ${mant.c} kcal</strong><br><span style="color:#9ca3af;">Pro: ${mant.p}g | Gra: ${mant.f}g | Car: ${mant.cb}g</span>
+        </div>
+        <div style="margin-bottom: 12px; border-bottom: 1px solid #2a2e3f;">
+          <strong style="color:#ffaa66;">🔻 Déficit: ${def.c} kcal</strong><br><span style="color:#9ca3af;">Pro: ${def.p}g | Gra: ${def.f}g | Car: ${def.cb}g</span>
+        </div>
+        <div>
+          <strong style="color:#25D366;">🔺 Volumen: ${sur.c} kcal</strong><br><span style="color:#9ca3af;">Pro: ${sur.p}g | Gra: ${sur.f}g | Car: ${sur.cb}g</span>
+        </div>
+      `;
+    } else { alert("Completa todos los datos."); }
+  }
+
+  function calcularHidratacion() {
+    const peso = parseFloat(document.getElementById('hid-peso').value);
+    const horas = parseFloat(document.getElementById('hid-horas').value) || 0;
+    const tempMultiplicador = parseFloat(document.getElementById('hid-temp').value);
+    const climaExtra = parseFloat(document.getElementById('hid-clima').value);
+    const resDiv = document.getElementById('hid-resultado');
+    const factoresDiv = document.getElementById('hid-factores');
+
+    if (peso > 0) {
+      let aguaBase = peso * 35;
+      let aguaActividad = horas * 500;
+      let total = (aguaBase + aguaActividad) * tempMultiplicador + climaExtra;
+      let litros = (total / 1000).toFixed(2);
+
+      resDiv.style.display = 'block';
+      factoresDiv.style.display = 'block';
+      resDiv.innerHTML = `
+        <span style="font-size:2rem; color:#00f0ff; font-weight: 800;">~${litros} Litros</span><br>
+        <span style="font-size:0.9rem; color:#9ca3af;">Estimación diaria recomendada (Agua o infusiones)</span>
+      `;
+    } else {
+      alert("Por favor, ingresa al menos tu peso.");
+    }
+  }
+</script>
 </body>
 </html>
